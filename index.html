@@ -1,78 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nova — Free Modern Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #0f172a; color: #e5e7eb; }
-    header { padding: 24px 8%; display: flex; justify-content: space-between; align-items: center; }
-    header h1 { color: #38bdf8; font-weight: 700; }
-    nav a { color: #e5e7eb; margin-left: 24px; text-decoration: none; font-weight: 500; }
-    nav a:hover { color: #38bdf8; }
-
-    .hero { padding: 80px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    .hero h2 { font-size: 48px; line-height: 1.2; margin-bottom: 20px; }
-    .hero p { color: #cbd5f5; margin-bottom: 30px; }
-    .hero button { padding: 14px 28px; background: #38bdf8; border: none; border-radius: 8px; color: #0f172a; font-weight: 600; cursor: pointer; }
-    .hero button:hover { background: #0ea5e9; }
-
-    .card { background: #020617; padding: 30px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-
-    .features { padding: 60px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-    .features h3 { margin-bottom: 10px; color: #38bdf8; }
-
-    footer { padding: 24px; text-align: center; background: #020617; color: #94a3b8; margin-top: 60px; }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; text-align: center; }
-      nav { display: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventrion Diagnostics | Ventrion Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Ventrion Logo" height="60">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+            <a href="awareness.html">Cardiology Advocacy</a>
+            <a href="join.html">Join Us</a>
+        </nav>
+    </header>
 
-  <header>
-    <h1>Nova</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Ventrion Diagnostics</h1>
+        <p>Promoting cardiovascular research, awareness, and ethical advocacy through Ventrion Lab.</p>
+        <a href="join.html">Apply to Join</a>
+    </section>
 
-  <section class="hero">
-    <div>
-      <h2>Build a clean & modern website for free</h2>
-      <p>This responsive website is built using pure HTML and CSS. You can use it for portfolios, startups, school projects, or personal pages.</p>
-      <button>Get Started</button>
-    </div>
-    <div class="card">
-      <h3>Why choose this?</h3>
-      <p>• No frameworks required<br>• Fully responsive<br>• Easy to edit<br>• Free forever</p>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Ventrion Lab</h2>
+        <p>Ventrion Lab is the research arm of Ventrion Diagnostics, focusing on student-led, ethical cardiovascular research. We aim to spread awareness, advocate for patient care, and provide credible educational resources for the public and research community.</p>
+        <img src="https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Cardiology research" class="section-image">
+    </section>
 
-  <section class="features">
-    <div class="card">
-      <h3>Fast</h3>
-      <p>Lightweight design with smooth performance.</p>
-    </div>
-    <div class="card">
-      <h3>Responsive</h3>
-      <p>Looks great on mobile, tablet, and desktop.</p>
-    </div>
-    <div class="card">
-      <h3>Customizable</h3>
-      <p>Change colors, text, and layout easily.</p>
-    </div>
-  </section>
+    <!-- Awareness / Advocacy Section -->
+    <section id="advocacy">
+        <h2>Cardiology Awareness & Advocacy</h2>
+        <p>Stay updated with posts, research findings, and resources on heart care, prevention, and treatment. Our advocacy aims to educate communities and promote evidence-based cardiovascular health practices.</p>
+        <div class="cards">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1581093448790-8f3e9e0c0e92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="ECG">
+                <h3>Heart Health Tips</h3>
+                <p>Simple measures to reduce risk of myocardial infarction and improve cardiovascular health.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1581094655120-f5a7d7d53bdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Cardiology Research">
+                <h3>Research Updates</h3>
+                <p>Latest insights from our lab and global cardiovascular research initiatives.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600062158237-0e1288db9d9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Awareness">
+                <h3>Community Advocacy</h3>
+                <p>Programs and initiatives to spread heart care awareness in local and global communities.</p>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    © 2025 Nova Website. Made for free use.
-  </footer>
-
+    <!-- Footer -->
+    <footer>
+        <p>“Progress in cardiology begins with careful thinking, sustained commitment, and scientific integrity.”</p>
+        <p>© 2025 Ventrion Diagnostics | Ventrion Lab</p>
+    </footer>
 </body>
 </html>
