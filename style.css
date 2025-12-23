@@ -12,7 +12,7 @@ header nav a { margin-left: 25px; font-weight: bold; }
 .hero { text-align: center; padding: 80px 20px; background: url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') no-repeat center/cover; color: white; border-radius: 8px; }
 .hero h1 { font-family: 'Merriweather', serif; font-size: 2.5em; margin-bottom: 20px; }
 .hero p { font-size: 1.2em; max-width: 700px; margin: 0 auto 20px; }
-.hero a { display: inline-block; background: #fff; color: #A51C30; padding: 12px 25px; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+.hero a { display: inline-block; background: #A51C30; color: #fff; padding: 12px 25px; border-radius: 5px; font-weight: bold; transition: 0.3s; }
 .hero a:hover { background: #f1f1f1; }
 
 /* Sections */
@@ -41,3 +41,4 @@ footer a { color: #A51C30; }
     header { flex-direction: column; }
     header nav a { margin: 10px 0; }
 }
+
