@@ -1,4 +1,31 @@
-/* Prevent page pop/scroll jump */
+/* PAGE TRANSITIONS - SWIPE UP */
+body {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+body.page-enter {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+body.page-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+body.page-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+body.page-exit-active {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Prevent layout jumps */
 html, body {
   margin: 0;
   padding: 0;
@@ -6,21 +33,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* PAGE TRANSITIONS - FADE ONLY */
-body {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-body.fade-in {
-  opacity: 1;
-}
-
-body.fade-out {
-  opacity: 0;
-}
-
-/* Accessibility */
+/* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {
   body {
     transition: none;
@@ -70,6 +83,7 @@ footer a { color: #A51C30; }
     header { flex-direction: column; }
     header nav a { margin: 10px 0; }
 }
+
 
 
 
