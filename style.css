@@ -1,3 +1,19 @@
+/* PAGE TRANSITIONS */
+body {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out; /* CHANGE TIME HERE */
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
 /* Base styling */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; background-color: #f9f9f9; }
@@ -41,6 +57,7 @@ footer a { color: #A51C30; }
     header { flex-direction: column; }
     header nav a { margin: 10px 0; }
 }
+
 
 
 
