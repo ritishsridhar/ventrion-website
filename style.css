@@ -1,4 +1,4 @@
-/* PAGE TRANSITIONS - SWIPE UP */
+/* ================= PAGE TRANSITIONS ================= */
 body {
   transform: translateY(0);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -25,7 +25,7 @@ body.page-exit-active {
   opacity: 0;
 }
 
-/* Prevent layout jumps */
+/* ================= RESET ================= */
 html, body {
   margin: 0;
   padding: 0;
@@ -33,26 +33,26 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Accessibility: reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  body {
-    transition: none;
-  }
-}
-
-/* Base styling */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
+/* ================= BASE ================= */
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
   line-height: 1.6;
   background-color: #f9f9f9;
-  padding-top: 120px; /* space for header */
+  padding-top: 120px; /* space for fixed header */
 }
 
 a {
@@ -60,67 +60,82 @@ a {
   text-decoration: none;
 }
 
-/* ================= HEADER ================= */
+/* ===================================================== */
+/* ================= HEADER (NO WRAP) ================== */
+/* ===================================================== */
 
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: #ffffff;
+
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px; /* REDUCED side padding = MORE NAV SPACE */
+
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+
+  padding: 16px 24px;
+  background: #ffffff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
+/* LEFT: LOGO + NAME */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
-/* Logo */
 .logo {
-  height: 52px; /* slightly reduced to free width */
+  height: 44px;
   width: auto;
+  display: block;
 }
 
-/* Company Name – Harvard style */
 .company-name {
   font-family: 'Merriweather', serif;
-  font-size: 30px;      /* slightly reduced for layout */
+  font-size: 26px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
   color: #A51C30;
-  white-space: nowrap;
+
+  white-space: nowrap !important;
 }
 
-/* Navigation – FIXED */
+/* RIGHT: NAV */
 .nav-links {
   display: flex;
   align-items: center;
-  white-space: nowrap; /* PREVENT WRAPPING */
+  gap: 22px;
+
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
 .nav-links a {
-  margin-left: 32px;    /* balanced spacing */
   font-weight: 700;
-  font-size: 1.15em;    /* larger text */
-  letter-spacing: 0.6px;
+  font-size: 1.05em;
+  letter-spacing: 0.4px;
 }
 
-/* ================= HERO ================= */
+/* ===================================================== */
+/* ================= HERO =============================== */
+/* ===================================================== */
 
 .hero {
   text-align: center;
   padding: 80px 20px;
   background: url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080')
     no-repeat center / cover;
-  color: white;
   border-radius: 8px;
 }
 
@@ -128,14 +143,14 @@ a {
   font-family: 'Merriweather', serif;
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #333333;
+  color: #333;
 }
 
 .hero p {
   font-size: 1.2em;
   max-width: 700px;
   margin: 0 auto 20px;
-  color: #333333;
+  color: #333;
 }
 
 .hero a {
@@ -152,7 +167,9 @@ a {
   background: #7f1524;
 }
 
-/* ================= SECTIONS ================= */
+/* ===================================================== */
+/* ================= SECTIONS =========================== */
+/* ===================================================== */
 
 section {
   max-width: 1000px;
@@ -173,15 +190,9 @@ section p {
   margin-bottom: 25px;
 }
 
-/* ================= TEAM & ADVISORY ================= */
-
-#team h3,
-#advisory h3 {
-  font-size: 1.25em;
-  letter-spacing: 0.6px;
-}
-
-/* ================= CARDS ================= */
+/* ===================================================== */
+/* ================= CARDS ============================== */
+/* ===================================================== */
 
 .cards {
   display: flex;
@@ -225,7 +236,9 @@ section p {
   border-radius: 8px;
 }
 
-/* ================= FOOTER ================= */
+/* ===================================================== */
+/* ================= FOOTER ============================= */
+/* ===================================================== */
 
 footer {
   text-align: center;
@@ -238,30 +251,29 @@ footer p {
   margin-bottom: 5px;
 }
 
-footer a {
-  color: #A51C30;
-}
+/* ===================================================== */
+/* ================= MOBILE ============================= */
+/* ===================================================== */
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .site-header {
     flex-direction: column;
-    gap: 12px;
-    padding: 18px;
+    align-items: center;
+    white-space: normal !important;
   }
 
   .nav-links {
-    flex-wrap: wrap; /* allow wrap on mobile only */
+    flex-wrap: wrap;
     justify-content: center;
+    margin-top: 10px;
   }
 
   .nav-links a {
-    margin: 10px 16px;
     font-size: 1em;
+    margin: 6px 12px;
   }
 
   .company-name {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
