@@ -277,3 +277,28 @@ footer p {
     font-size: 22px;
   }
 }
+/* ================= HOME HERO EKG OVERLAY ================= */
+
+.hero-ekg {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-ekg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: url("ekg.png") center center / contain no-repeat;
+  opacity: 0.12;          /* subtle, professional */
+  pointer-events: none;
+
+  transform: scale(1.05);
+}
+
+.hero-ekg > * {
+  position: relative;
+  z-index: 1;
+}
+
+
