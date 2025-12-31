@@ -52,7 +52,7 @@ body {
   color: #333;
   line-height: 1.6;
   background-color: #f9f9f9;
-  padding-top: 90px; /* IMPORTANT: space for fixed header */
+  padding-top: 115px; /* adjusted for taller header */
 }
 
 a {
@@ -71,7 +71,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 50px;
+  padding: 20px 60px; /* TALLER + LONGER */
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 1000;
 }
@@ -79,30 +79,30 @@ a {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 /* Logo */
 .logo {
-  height: 45px;
+  height: 55px; /* larger to balance text */
   width: auto;
 }
 
 /* Company Name – Harvard style */
 .company-name {
   font-family: 'Merriweather', serif;
-  font-size: 26px;
+  font-size: 32px;        /* larger, authoritative */
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2.5px; /* academic spacing */
   text-transform: uppercase;
   color: #A51C30;
 }
 
 /* Navigation */
 .nav-links a {
-  margin-left: 25px;
+  margin-left: 28px;
   font-weight: bold;
-  font-size: 0.95em;
+  font-size: 1em;
 }
 
 /* ================= HERO ================= */
@@ -236,8 +236,8 @@ footer a {
 
   .site-header {
     flex-direction: column;
-    gap: 10px;
-    padding: 15px;
+    gap: 12px;
+    padding: 18px;
   }
 
   .nav-links a {
@@ -245,6 +245,6 @@ footer a {
   }
 
   .company-name {
-    font-size: 22px;
+    font-size: 24px;
   }
 }
