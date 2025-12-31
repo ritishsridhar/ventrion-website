@@ -277,31 +277,38 @@ footer p {
     font-size: 22px;
   }
 }
-/* ================= HOME HERO EKG OVERLAY ================= */
+/* ===================================================== */
+/* ============ GLOBAL EKG BACKGROUND ================== */
+/* ===================================================== */
 
-.hero-ekg {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-ekg::before {
+/* Page-wide EKG background (below header) */
+body::before {
   content: "";
-  position: absolute;
-  inset: 0;
+  position: fixed;
 
-  background: url("ekg.png") center center / contain no-repeat;
-  opacity: 0.12;          /* subtle, professional */
+  top: 120px;              /* height of fixed header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-image: url("ekg.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+
+  opacity: 0.18;           /* professional visibility */
   pointer-events: none;
 
-  transform: scale(1.05);
+  z-index: 0;
 }
 
-.hero-ekg > * {
+/* Ensure all page content is above EKG */
+body > * {
   position: relative;
   z-index: 1;
 }
 
-
-
-
-
+/* Header always on top */
+.site-header {
+  z-index: 1000;
+}
