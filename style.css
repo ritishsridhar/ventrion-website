@@ -52,7 +52,7 @@ body {
   color: #333;
   line-height: 1.6;
   background-color: #f9f9f9;
-  padding-top: 115px;
+  padding-top: 120px; /* space for header */
 }
 
 a {
@@ -71,7 +71,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 60px;
+  padding: 20px 40px; /* REDUCED side padding = MORE NAV SPACE */
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 1000;
 }
@@ -84,26 +84,33 @@ a {
 
 /* Logo */
 .logo {
-  height: 55px;
+  height: 52px; /* slightly reduced to free width */
   width: auto;
 }
 
 /* Company Name – Harvard style */
 .company-name {
   font-family: 'Merriweather', serif;
-  font-size: 32px;
+  font-size: 30px;      /* slightly reduced for layout */
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #A51C30;
+  white-space: nowrap;
 }
 
-/* Navigation — UPDATED */
+/* Navigation – FIXED */
+.nav-links {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* PREVENT WRAPPING */
+}
+
 .nav-links a {
-  margin-left: 45px;        /* MORE SPACE */
+  margin-left: 32px;    /* balanced spacing */
   font-weight: 700;
-  font-size: 1.15em;        /* BIGGER TEXT */
-  letter-spacing: 0.5px;
+  font-size: 1.15em;    /* larger text */
+  letter-spacing: 0.6px;
 }
 
 /* ================= HERO ================= */
@@ -168,7 +175,8 @@ section p {
 
 /* ================= TEAM & ADVISORY ================= */
 
-#team h3 {
+#team h3,
+#advisory h3 {
   font-size: 1.25em;
   letter-spacing: 0.6px;
 }
@@ -237,19 +245,19 @@ footer a {
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .site-header {
     flex-direction: column;
     gap: 12px;
     padding: 18px;
   }
 
+  .nav-links {
+    flex-wrap: wrap; /* allow wrap on mobile only */
+    justify-content: center;
+  }
+
   .nav-links a {
-    margin: 10px 18px;
+    margin: 10px 16px;
     font-size: 1em;
   }
 
