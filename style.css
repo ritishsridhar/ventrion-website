@@ -31,6 +31,9 @@ html, body {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
+
+  /* 6️⃣ Smooth scrolling */
+  scroll-behavior: smooth;
 }
 
 * {
@@ -61,7 +64,7 @@ a {
 }
 
 /* ===================================================== */
-/* ================= HEADER (NO WRAP) ================== */
+/* ================= HEADER ============================= */
 /* ===================================================== */
 
 .site-header {
@@ -81,7 +84,16 @@ a {
   padding: 16px 24px;
   background: #ffffff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
   z-index: 1000;
+
+  /* 4️⃣ Navbar shrink animation */
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.shrink {
+  padding: 8px 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 /* LEFT: LOGO + NAME */
@@ -151,11 +163,17 @@ a {
     no-repeat center / cover;
 }
 
+/* 1️⃣ HERO FADE IN */
+
 .hero h1 {
   font-family: 'Merriweather', serif;
   font-size: 3em;
   margin-bottom: 20px;
   color: #ffffff;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
 }
 
 .hero p {
@@ -163,6 +181,11 @@ a {
   max-width: 700px;
   margin: 0 auto 25px;
   color: #f0f0f0;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .hero a {
@@ -172,11 +195,45 @@ a {
   padding: 14px 28px;
   border-radius: 6px;
   font-weight: bold;
-  transition: 0.3s;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.6s;
+
+  transition: all 0.3s ease;
 }
+
+/* 2️⃣ BUTTON HOVER ANIMATION */
 
 .hero a:hover {
   background: #7f1524;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* Fade animation */
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================== */
+/* ================= SCROLL REVEAL ===================== */
+/* ===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===================================================== */
@@ -220,6 +277,13 @@ section p {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .card h3 {
@@ -294,6 +358,8 @@ footer p {
 /* ============ GLOBAL EKG BACKGROUND ================== */
 /* ===================================================== */
 
+/* 5️⃣ EKG PULSE */
+
 body::before {
   content: "";
   position: fixed;
@@ -312,6 +378,27 @@ body::before {
   pointer-events: none;
 
   z-index: 0;
+
+  animation: ekgPulse 4s ease-in-out infinite;
+}
+
+@keyframes ekgPulse {
+
+  0% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.22;
+    transform: scale(1.03);
+  }
+
+  100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+
 }
 
 body > * {
@@ -322,4 +409,5 @@ body > * {
 .site-header {
   z-index: 1000;
 }
+
 
