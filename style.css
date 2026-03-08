@@ -57,7 +57,20 @@ body {
   color: #333;
   line-height: 1.6;
   background-color: #f9f9f9;
-  padding-top: 110px; /* FIXED HEADER OFFSET */
+  padding-top: 110px;
+}
+
+/* subtle research grid */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -2;
 }
 
 a {
@@ -112,6 +125,8 @@ a {
   color: #A51C30;
 }
 
+/* NAV */
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -121,6 +136,24 @@ a {
 .nav-links a {
   font-weight: 700;
   font-size: 1.05em;
+  position: relative;
+}
+
+/* nav hover animation */
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #A51C30;
+  transition: width .3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* ===================================================== */
@@ -129,7 +162,7 @@ a {
 
 .hero {
 
-  height: calc(100vh - 110px); /* FIXED HERO HEIGHT */
+  height: calc(100vh - 110px);
   width: 100%;
 
   display: flex;
@@ -151,43 +184,35 @@ a {
   background-repeat: no-repeat;
 }
 
-/* HERO EKG LINE */
+/* ECG WAVE */
 
 .hero::after {
   content: "";
   position: absolute;
-  bottom: 18%;
-  left: -100%;
+  bottom: 20%;
+  left: -50%;
   width: 200%;
-  height: 4px;
+  height: 80px;
 
-  background: #00ff9c;
+  background: url("https://i.imgur.com/9Qx4V7A.png");
+  background-size: contain;
+  background-repeat: repeat-x;
 
-  box-shadow:
-  0 0 6px #00ff9c,
-  0 0 12px #00ff9c,
-  0 0 20px #00ff9c;
+  opacity: 0.7;
 
-  animation: ekgMove 6s linear infinite;
+  animation: heartbeat 8s linear infinite;
 }
 
-@keyframes ekgMove {
-
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(50%);
-  }
-
+@keyframes heartbeat {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
 }
 
 /* HERO TEXT */
 
 .hero h1 {
   font-family: 'Merriweather', serif;
-  font-size: 3em;
+  font-size: 3.4em;
   margin-bottom: 20px;
   color: #ffffff;
 
@@ -197,8 +222,8 @@ a {
 }
 
 .hero p {
-  font-size: 1.2em;
-  max-width: 700px;
+  font-size: 1.25em;
+  max-width: 720px;
   margin: 0 auto 25px;
   color: #f0f0f0;
 
@@ -290,16 +315,37 @@ section p {
   background: #fff;
   padding: 20px;
   flex: 1 1 280px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: center;
 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all .35s ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* card glow */
+
+.card::before {
+  content: "";
+  position: absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle,#A51C3020,transparent 60%);
+  opacity:0;
+  transition:.4s;
+}
+
+.card:hover::before {
+  opacity:1;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,.2);
 }
 
 .card h3 {
