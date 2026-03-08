@@ -1,4 +1,5 @@
 /* ================= PAGE TRANSITIONS ================= */
+
 body {
   transform: translateY(0);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -56,7 +57,7 @@ body {
   color: #333;
   line-height: 1.6;
   background-color: #f9f9f9;
-  padding-top: 120px;
+  padding-top: 110px; /* FIXED HEADER OFFSET */
 }
 
 a {
@@ -75,12 +76,8 @@ a {
   width: 100%;
 
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  flex-wrap: nowrap !important;
-  white-space: nowrap !important;
 
   padding: 16px 24px;
   background: #ffffff;
@@ -100,14 +97,10 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-shrink: 0 !important;
-  white-space: nowrap !important;
 }
 
 .logo {
   height: 44px;
-  width: auto;
-  display: block;
 }
 
 .company-name {
@@ -128,7 +121,6 @@ a {
 .nav-links a {
   font-weight: 700;
   font-size: 1.05em;
-  letter-spacing: 0.4px;
 }
 
 /* ===================================================== */
@@ -137,7 +129,7 @@ a {
 
 .hero {
 
-  min-height: 100vh;
+  height: calc(100vh - 110px); /* FIXED HERO HEIGHT */
   width: 100%;
 
   display: flex;
@@ -266,7 +258,7 @@ a {
 
 section:not(.hero) {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 60px auto;
   padding: 0 20px;
 }
 
@@ -367,51 +359,6 @@ footer p {
 
   .company-name {
     font-size: 22px;
-  }
-
-}
-
-/* ===================================================== */
-/* ============ GLOBAL EKG BACKGROUND ================== */
-/* ===================================================== */
-
-body::before {
-  content: "";
-  position: fixed;
-
-  top: 120px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  background-image: url("ekg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  opacity: 0.18;
-  pointer-events: none;
-
-  z-index: -1;
-
-  animation: ekgPulse 4s ease-in-out infinite;
-}
-
-@keyframes ekgPulse {
-
-  0% {
-    opacity: 0.12;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.22;
-    transform: scale(1.03);
-  }
-
-  100% {
-    opacity: 0.12;
-    transform: scale(1);
   }
 
 }
