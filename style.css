@@ -131,12 +131,53 @@ a {
 /* ================= HERO =============================== */
 /* ===================================================== */
 
+/* ===================================================== */
+/* ================= HERO =============================== */
+/* ===================================================== */
+
 .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   text-align: center;
+
+  height: 100vh;     /* fills full screen height */
+  width: 100%;       /* full width */
+
   padding: 80px 20px;
+
   background: url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080')
-    no-repeat center / cover;
-  border-radius: 8px;
+    no-repeat center center / cover;
+}
+
+.hero h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.hero p {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  color: #333;
+}
+
+.hero a {
+  display: inline-block;
+  background: #A51C30;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.hero a:hover {
+  background: #7f1524;
 }
 
 .hero h1 {
@@ -312,3 +353,4 @@ body > * {
 .site-header {
   z-index: 1000;
 }
+
