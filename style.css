@@ -106,8 +106,6 @@ a {
   letter-spacing: 1.6px;
   text-transform: uppercase;
   color: #A51C30;
-
-  white-space: nowrap !important;
 }
 
 /* RIGHT: NAV */
@@ -115,65 +113,74 @@ a {
   display: flex;
   align-items: center;
   gap: 22px;
-
-  flex-shrink: 0 !important;
-  white-space: nowrap !important;
 }
 
 .nav-links a {
   font-weight: 700;
   font-size: 1.05em;
-  letter-spacing: 0.4px;
 }
 
 /* ===================================================== */
-/* ================= HERO =============================== */
+/* ================= HERO (MODERN) ===================== */
 /* ===================================================== */
 
 .hero {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-
-  text-align: center;
+  justify-content: space-between;
 
   height: 100vh;
   width: 100%;
 
-  margin-top: -120px; /* hero goes behind header */
-  padding-top: 120px;
+  margin-top: -120px;
+  padding: 140px 8% 40px 8%;
 
-  background: url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080')
-    no-repeat center center / cover;
+  color: white;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080')
+    no-repeat center / cover;
+}
+
+/* LEFT SIDE TEXT */
+
+.hero-content {
+  max-width: 520px;
 }
 
 .hero h1 {
   font-family: 'Merriweather', serif;
-  font-size: 2.5em;
+  font-size: 3em;
   margin-bottom: 20px;
-  color: #fff;
+  color: white;
 }
 
 .hero p {
-  font-size: 1.2em;
-  max-width: 700px;
-  margin: 0 auto 20px;
-  color: #fff;
+  font-size: 1.15em;
+  margin-bottom: 25px;
+  color: #e6e6e6;
 }
 
 .hero a {
   display: inline-block;
   background: #A51C30;
   color: #fff;
-  padding: 12px 25px;
-  border-radius: 5px;
+  padding: 14px 26px;
+  border-radius: 6px;
   font-weight: bold;
   transition: 0.3s;
 }
 
 .hero a:hover {
   background: #7f1524;
+}
+
+/* RIGHT IMAGE */
+
+.hero-image img {
+  width: 420px;
+  max-width: 100%;
 }
 
 /* ===================================================== */
@@ -222,11 +229,6 @@ section p {
 .card h3 {
   margin-bottom: 12px;
   color: #A51C30;
-  font-family: 'Merriweather', serif;
-}
-
-.card p {
-  font-size: 0.95em;
 }
 
 .card img {
@@ -235,14 +237,6 @@ section p {
   object-fit: cover;
   border-radius: 5px;
   margin-bottom: 15px;
-}
-
-/* Section images */
-.section-image {
-  width: 100%;
-  height: auto;
-  margin-top: 20px;
-  border-radius: 8px;
 }
 
 /* ===================================================== */
@@ -256,35 +250,29 @@ footer {
   color: #fff;
 }
 
-footer p {
-  margin-bottom: 5px;
-}
-
 /* ===================================================== */
 /* ================= MOBILE ============================= */
 /* ===================================================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    margin-top: 40px;
+  }
+
+  .hero-image img {
+    width: 280px;
+  }
+
   .site-header {
     flex-direction: column;
-    align-items: center;
-    white-space: normal !important;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .nav-links a {
-    font-size: 1em;
-    margin: 6px 12px;
-  }
-
-  .company-name {
-    font-size: 22px;
-  }
 }
 
 /* ===================================================== */
@@ -314,9 +302,5 @@ body::before {
 body > * {
   position: relative;
   z-index: 1;
-}
-
-.site-header {
-  z-index: 1000;
 }
 
