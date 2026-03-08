@@ -31,8 +31,6 @@ html, body {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
-
-  /* 6️⃣ Smooth scrolling */
   scroll-behavior: smooth;
 }
 
@@ -87,7 +85,6 @@ a {
 
   z-index: 1000;
 
-  /* 4️⃣ Navbar shrink animation */
   transition: padding 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -97,6 +94,7 @@ a {
 }
 
 /* LEFT: LOGO + NAME */
+
 .header-left {
   display: flex;
   align-items: center;
@@ -124,6 +122,7 @@ a {
 }
 
 /* RIGHT: NAV */
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -157,13 +156,51 @@ a {
   border-radius: 0;
   margin: 0;
 
+  position: relative;
+  overflow: hidden;
+
+  /* FULL SCREEN BACKGROUND FIX */
   background:
     linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
-    url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600')
-    no-repeat center / cover;
+    url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* 1️⃣ HERO FADE IN */
+/* HERO EKG MOVING LINE */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 18%;
+  left: -100%;
+  width: 200%;
+  height: 120px;
+
+  background-image: url("ekg.png");
+  background-repeat: repeat-x;
+  background-size: contain;
+
+  opacity: 0.35;
+
+  animation: ekgMove 12s linear infinite;
+}
+
+@keyframes ekgMove {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+}
+
+/* HERO TEXT ANIMATION */
 
 .hero h1 {
   font-family: 'Merriweather', serif;
@@ -204,15 +241,11 @@ a {
   transition: all 0.3s ease;
 }
 
-/* 2️⃣ BUTTON HOVER ANIMATION */
-
 .hero a:hover {
   background: #7f1524;
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
-
-/* Fade animation */
 
 @keyframes fadeUp {
   to {
@@ -305,6 +338,7 @@ section p {
 }
 
 /* Section images */
+
 .section-image {
   width: 100%;
   height: auto;
@@ -358,8 +392,6 @@ footer p {
 /* ============ GLOBAL EKG BACKGROUND ================== */
 /* ===================================================== */
 
-/* 5️⃣ EKG PULSE */
-
 body::before {
   content: "";
   position: fixed;
@@ -406,8 +438,5 @@ body > * {
   z-index: 1;
 }
 
-.site-header {
-  z-index: 1000;
-}
 
 
