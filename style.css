@@ -204,13 +204,13 @@ body {
     text-decoration: none;
     border-radius: 6px;
     font-weight: bold;
-    transition: 0.3s;
+    animation: fadeUp 1s ease forwards 0.3s;
 }
 
 /* --- FOOTER: Clean & Minimal --- */
 footer {
     text-align: center;
-    padding: 40px 10px;
+    padding: 20px 10px;
     background: #f8f9fa;
     color: var(--text-muted);
     border-top: 1px solid var(--glass-border);
@@ -249,6 +249,7 @@ footer {
         text-align: center;
     }
 }
+
 
 
 
