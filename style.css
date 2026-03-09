@@ -129,30 +129,47 @@ body {
     margin-bottom: 20px;
 }
 
-/* --- REVEAL ANIMATION --- */
+/* --- REVEAL ANIMATION: Fixed --- */
 .reveal {
-opacity: 1; /* visible by default */
-transform: translateY(0);
-transition: 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+    visibility: hidden;
 }
+
 .reveal.active {
-opacity: 1;
-transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
 }
 
-
-/* --- HERO SECTION --- */
+/* --- HERO SECTION: Fixed Centering --- */
 .hero {
-    height: 90vh;
+    height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Ensures H1, P, and Button stack vertically */
+    align-items: center;    /* Horizontal center */
+    justify-content: center; /* Vertical center */
     text-align: center;
-    padding: 20px;
+    padding: 0 20px;
     background: 
-        linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)), 
+        linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)), 
         url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?auto=format&fit=crop&q=80&w=1920');
     background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero h1 {
@@ -222,4 +239,5 @@ footer {
         text-align: center;
     }
 }
+
 
