@@ -180,6 +180,13 @@ body {
     animation: fadeUp 1s ease forwards;
 }
 
+.hero h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 3.5em;
+    color: var(--text-main);
+    animation: fadeUp 1s ease forwards;
+}
+
 .hero p {
     font-size: 1.2em;
     color: var(--text-muted);
@@ -240,6 +247,7 @@ footer {
         text-align: center;
     }
 }
+
 
 
 
