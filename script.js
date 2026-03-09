@@ -57,6 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         });
+     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.onclick = () => {
+            navLinks.classList.toggle('active');
+        };
     });
 
 });
