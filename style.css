@@ -29,12 +29,12 @@ body {
   padding-top: 120px;
 }
 
-/* ================= HEADER & LOGO FIX ================= */
+/* ================= HEADER & LOGO ALIGNMENT ================= */
 .site-header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 120px; /* Fixed to prevent the massive header issue */
+  height: 80px; /* Reduced header height for a sleeker look */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -46,25 +46,27 @@ body {
 
 .header-left {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row; /* Aligns logo and text horizontally */
+  align-items: center; /* Centers them vertically against each other */
+  gap: 15px; /* Space between logo and name */
 }
 
 .logo {
-  height: 70px; /* Scales your 'vdx enhanced.png' perfectly */
+  height: 40px; /* Even smaller logo as requested */
   width: auto;
   object-fit: contain;
+  display: block;
 }
 
 .company-name {
   font-family: 'Merriweather', serif;
-  font-size: 14px;
+  font-size: 18px; /* Adjusted to match the visual height of the 40px logo */
   font-weight: 700;
   text-transform: uppercase;
   color: #A51C30;
-  margin-top: 5px;
+  line-height: 40px; /* Matches the logo height exactly */
+  margin: 0; /* Removes any extra spacing */
 }
-
 .nav-links {
   display: flex;
   gap: 20px;
@@ -164,3 +166,4 @@ section:not(.hero) {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
 }
+
