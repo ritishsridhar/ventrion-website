@@ -1,169 +1,86 @@
-/* ================= PAGE ANIMATIONS (FOR SCRIPT.JS) ================= */
-body {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+
+:root {
+    --primary-red: #A51C30;
+    --dark-bg: #0b0d0e;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
-body.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================= GLOBAL BACKGROUND ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  /* Fixed EKG Pattern as seen in your screenshot */
-  background-color: #ffffff;
-  background-image: url('https://i.imgur.com/9Qx4V7A.png'); 
-  background-repeat: repeat; 
-  background-size: 350px; 
-  background-attachment: fixed;
-  padding-top: 120px;
-}
-
-/* ================= HEADER & LOGO ALIGNMENT ================= */
+/* --- HEADER FIX: Logo & Name --- */
 .site-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 80px; /* Reduced header height for a sleeker look */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  background: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  z-index: 1000;
+    position: fixed;
+    top: 0; width: 100%; height: 70px;
+    background: rgba(11, 13, 14, 0.95);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .header-left {
-  display: flex;
-  flex-direction: row; /* Aligns logo and text horizontally */
-  align-items: center; /* Centers them vertically against each other */
-  gap: 15px; /* Space between logo and name */
+    display: flex;
+    flex-direction: row; /* Aligned horizontally */
+    align-items: center;
+    gap: 12px;
 }
 
 .logo {
-  height: 40px; /* Even smaller logo as requested */
-  width: auto;
-  object-fit: contain;
-  display: block;
+    height: 32px; /* Small and professional */
+    width: auto;
 }
 
 .company-name {
-  font-family: 'Merriweather', serif;
-  font-size: 18px; /* Adjusted to match the visual height of the 40px logo */
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #A51C30;
-  line-height: 40px; /* Matches the logo height exactly */
-  margin: 0; /* Removes any extra spacing */
-}
-.nav-links {
-  display: flex;
-  gap: 20px;
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    text-transform: uppercase;
 }
 
-.nav-links a {
-  font-weight: 700;
-  color: #A51C30;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
+/* --- EKG BACKGROUND ANIMATION --- */
+.ekg-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0.15;
 }
 
-.nav-links a:hover {
-  color: #333;
+.ekg-line {
+    stroke: var(--primary-red);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: heartbeat 4s linear infinite;
 }
 
-/* ================= HERO SECTION ================= */
-.hero {
-  height: 60vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  /* Transparent dark overlay to show the medical background clearly */
-  background: rgba(10, 10, 10, 0.75); 
-  color: #ffffff;
-  margin-bottom: 40px;
+@keyframes heartbeat {
+    to { stroke-dashoffset: 0; }
 }
 
-.hero h1 {
-  font-family: 'Merriweather', serif;
-  font-size: clamp(2rem, 5vw, 4rem);
-  margin-bottom: 15px;
+/* --- RESEARCH CARDS: Fix for broken boxes --- */
+.project-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    padding: 35px;
+    border-radius: 15px;
+    transition: 0.4s ease;
+    overflow: hidden;
 }
 
-.cta-button {
-  display: inline-block;
-  background: #A51C30;
-  color: #fff;
-  padding: 12px 25px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
+.project-card:hover {
+    border-color: var(--primary-red);
+    background: rgba(165, 28, 48, 0.05);
+    transform: translateY(-8px);
 }
 
-/* ================= INDIVIDUAL PARTNER CARDS ================= */
-.partner-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* Keeps cards separate, not clubbed together */
-  padding: 40px 20px;
-  background: transparent;
+.project-card h3 {
+    color: var(--primary-red);
+    font-family: 'Merriweather', serif;
+    margin-bottom: 12px;
 }
-
-.partner-card {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  width: 160px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-.partner-card:hover {
-  transform: translateY(-5px);
-}
-
-.partner-card img {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
-}
-
-/* ================= CONTENT REVEAL ================= */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-section:not(.hero) {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-}
-
