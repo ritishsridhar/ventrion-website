@@ -66,6 +66,7 @@ body {
     align-items: stretch;
     gap: 30px;
     padding: 120px 5% 60px;
+    justify-content: center; /* Centers cards horizontally */
     flex-wrap: wrap; /* Wraps gracefully on mobile */
 }
 
@@ -129,3 +130,4 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
