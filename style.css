@@ -1,20 +1,8 @@
-
-/* ================= PAGE TRANSITIONS ================= */
-
-body {
-  transform: translateY(0);
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  opacity: 1;
-}
-
-/* ================= RESET & BASE ================= */
-
+/* ================= GLOBAL BACKGROUND ================= */
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  min-height: 100%;
 }
 
 * {
@@ -26,50 +14,51 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
-  line-height: 1.6;
-  background-color: #ffffff; /* Changed from f9f9f9 to clean white */
-  padding-top: 80px;
+  /* Full site EKG pattern background */
+  background-color: #ffffff;
+  background-image: url('https://i.imgur.com/9Qx4V7A.png'); 
+  background-repeat: repeat; 
+  background-size: 350px; 
+  background-attachment: fixed;
+  padding-top: 110px; /* Space for the fixed header */
 }
 
-/* THE FIX: Recreating the "Research Grid" without broken images */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(165, 28, 48, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(165, 28, 48, 0.03) 1px, transparent 1px);
-  background-size: 30px 30px; /* This creates that clean "Lab Notebook" look */
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* ================= HEADER & HAMBURGER ================= */
-
+/* ================= HEADER & LOGO FIX ================= */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 110px; /* Fixed height to prevent giant header */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 10px 40px;
   background: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column; /* Stacks name under logo */
+  align-items: flex-start;
+}
+
+.logo {
+  height: 55px; /* Forced professional size */
+  width: auto;
+  object-fit: contain;
 }
 
 .company-name {
   font-family: 'Merriweather', serif;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   color: #A51C30;
+  margin-top: 5px;
 }
-
-/* Hide the checkbox for the menu */
-#menu-toggle { display: none; }
 
 .nav-links {
   display: flex;
@@ -79,106 +68,103 @@ body::before {
 .nav-links a {
   font-weight: 700;
   color: #A51C30;
-  transition: opacity 0.3s;
+  text-decoration: none;
+  font-size: 14px;
 }
 
-/* ================= HERO (THE FIX FOR THE GRAY BOX) ================= */
-
+/* ================= HERO (DARK RESEARCH THEME) ================= */
 .hero {
-  height: 80vh;
+  height: 65vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-  
-  /* We use a high-quality medical image and a dark gradient to kill the gray look */
-  background: 
-    linear-gradient(rgba(20, 20, 20, 0.7), rgba(20, 20, 20, 0.9)), 
-    url('https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=1920');
-  background-size: cover;
-  background-position: center;
-}
-
-/* Pure CSS Heartbeat (Replaces the broken Imgur heartbeat) */
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 20%;
-  left: 0;
-  width: 200%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #A51C30, transparent);
-  opacity: 0.6;
-  animation: heartbeat-move 4s linear infinite;
-}
-
-@keyframes heartbeat-move {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
+  /* Dark semi-transparent background to show EKG but keep text clear */
+  background: rgba(34, 34, 34, 0.85); 
+  color: #ffffff;
+  padding: 40px;
 }
 
 .hero h1 {
   font-family: 'Merriweather', serif;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  color: #ffffff;
-  margin-bottom: 15px;
-  z-index: 2;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
 }
 
 .hero p {
-  color: #e0e0e0;
-  max-width: 600px;
-  margin-bottom: 30px;
-  z-index: 2;
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto 30px;
 }
 
-.hero a {
+.cta-button {
+  display: inline-block;
   background: #A51C30;
-  color: white;
-  padding: 15px 30px;
+  color: #fff;
+  padding: 14px 28px;
   border-radius: 4px;
   font-weight: bold;
-  z-index: 5;
+  text-decoration: none;
   transition: transform 0.2s;
 }
 
-.hero a:hover { transform: scale(1.05); }
+.cta-button:hover {
+  transform: scale(1.05);
+}
 
-/* ================= MOBILE (HAMBURGER LOGIC) ================= */
+/* ================= INDIVIDUAL PARTNER CARDS ================= */
+.partner-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Separates cards */
+  padding: 40px 20px;
+}
+
+.partner-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  width: 140px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* ================= CONTENT SECTIONS ================= */
+section:not(.hero) {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+}
+
+.section-image {
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+/* ================= MOBILE NAVIGATION ================= */
+#menu-toggle { display: none; }
 
 @media (max-width: 1000px) {
-  .menu-button-container {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
-  
-  .hamburger-bar {
-    width: 25px;
-    height: 3px;
-    background: #A51C30;
-  }
-
   .nav-links {
-    display: none; /* Hidden on mobile until checked */
+    display: none;
+    flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     background: white;
-    flex-direction: column;
     padding: 20px;
-    text-align: center;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
-
-  /* Show menu when checkbox is clicked */
-  #menu-toggle:checked ~ .nav-links {
-    display: flex;
-  }
+  .menu-button-container { display: block; cursor: pointer; }
+  .hamburger { width: 25px; height: 3px; background: #A51C30; }
+  #menu-toggle:checked ~ .nav-links { display: flex; }
 }
