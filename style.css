@@ -120,8 +120,8 @@ body {
 
 /* --- REVEAL ANIMATION --- */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1; /* Visible by default */
+    transform: translateY(0); /* No offset */
     transition: 0.8s ease-out;
 }
 
