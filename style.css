@@ -131,3 +131,46 @@ body {
     transform: translateY(0);
 }
 
+/* ===================================================== */
+/* ================= FOOTER ============================= */
+/* ===================================================== */
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: #333;
+  color: #fff;
+}
+
+footer p {
+  margin-bottom: 5px;
+}
+
+/* ===================================================== */
+/* ================= MOBILE ============================= */
+/* ===================================================== */
+
+@media (max-width: 1000px) {
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    white-space: normal !important;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .nav-links a {
+    font-size: 1em;
+    margin: 6px 12px;
+  }
+
+  .company-name {
+    font-size: 22px;
+  }
+}
+
+
