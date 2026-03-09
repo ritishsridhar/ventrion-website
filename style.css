@@ -182,7 +182,7 @@ body {
 
 .hero h2 {
     font-family: 'Merriweather', serif;
-    font-size: 3.5em;
+    font-size: 1.75em;
     color: var(--text-main);
     animation: fadeUp 1s ease forwards;
 }
@@ -247,6 +247,7 @@ footer {
         text-align: center;
     }
 }
+
 
 
 
