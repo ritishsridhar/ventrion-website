@@ -1,97 +1,62 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===============================
-     PAGE LOAD SLIDE ANIMATION
-  =============================== */
+    /* ==========================================
+       1. SCROLL REVEAL (INTERSECTION OBSERVER)
+       ========================================== */
+    // This triggers the .active class on .reveal elements
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
 
-  document.body.classList.add("page-enter");
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Once it animates in, we stop watching it for better performance
+                observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
 
-  setTimeout(() => {
-    document.body.classList.add("page-enter-active");
-  }, 20);
+    // Select all project cards and sections with the .reveal class
+    const revealElements = document.querySelectorAll('.reveal, .project-card');
+    revealElements.forEach(el => revealObserver.observe(el));
 
 
-
-  /* ===============================
-     PAGE TRANSITION (LINK CLICK)
-  =============================== */
-
-  document.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", function(e) {
-
-      const href = this.getAttribute("href");
-
-      // Ignore special links
-      if (
-        !href ||
-        href.startsWith("#") ||
-        href.startsWith("http") ||
-        href.startsWith("mailto:") ||
-        this.target === "_blank"
-      ) {
-        return;
-      }
-
-      e.preventDefault();
-
-      document.body.classList.remove("page-enter", "page-enter-active");
-      document.body.classList.add("page-exit");
-
-      setTimeout(() => {
-        document.body.classList.add("page-exit-active");
-      }, 20);
-
-      setTimeout(() => {
-        window.location.href = href;
-      }, 500); // must match CSS transition time
+    /* ==========================================
+       2. HEADER SCROLL EFFECT
+       ========================================== */
+    // Shrinks the header slightly and adds a border when scrolling
+    const header = document.querySelector('.site-header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.padding = "10px 6%";
+            header.style.background = "rgba(11, 13, 14, 0.98)";
+            header.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.3)";
+        } else {
+            header.style.padding = "20px 6%";
+            header.style.background = "rgba(11, 13, 14, 0.95)";
+            header.style.boxShadow = "none";
+        }
     });
 
-  });
 
-
-
-  /* ===============================
-     SCROLL EFFECTS
-  =============================== */
-
-  function handleScrollEffects() {
-
-    /* HEADER SHRINK */
-
-    const header = document.querySelector(".site-header");
-
-    if (header) {
-      if (window.scrollY > 50) {
-        header.classList.add("shrink");
-      } else {
-        header.classList.remove("shrink");
-      }
-    }
-
-
-
-    /* REVEAL ANIMATION */
-
-    const reveals = document.querySelectorAll(".reveal");
-
-    reveals.forEach((element) => {
-
-      const windowHeight = window.innerHeight;
-      const revealTop = element.getBoundingClientRect().top;
-      const revealPoint = 100;
-
-      if (revealTop < windowHeight - revealPoint) {
-        element.classList.add("active");
-      }
-
+    /* ==========================================
+       3. SMOOTH ANCHOR LINK SCROLLING
+       ========================================== */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
-
-  }
-
-  window.addEventListener("scroll", handleScrollEffects);
-
-  // Run once on load
-  handleScrollEffects();
 
 });
