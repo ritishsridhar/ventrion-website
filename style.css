@@ -17,7 +17,9 @@ body {
 /* --- HEADER: Small Logo & Inline Name --- */
 .site-header {
     position: fixed;
-    top: 0; width: 100%; height: 75px;
+    top: 0;
+    width: 100%;
+    height: 75px;
     background: rgba(11, 13, 14, 0.95);
     backdrop-filter: blur(12px);
     display: flex;
@@ -30,13 +32,13 @@ body {
 
 .header-left {
     display: flex;
-    flex-direction: row; /* Aligns logo and name side-by-side */
+    flex-direction: row; 
     align-items: center;
     gap: 12px;
 }
 
 .logo {
-    height: 35px; /* Forced professional small size */
+    height: 35px;
     width: auto;
 }
 
@@ -45,7 +47,7 @@ body {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--primary-red);
-    line-height: 35px; /* Matches logo height exactly */
+    line-height: 35px;
 }
 
 .nav-links a {
@@ -58,16 +60,15 @@ body {
 
 .nav-links a:hover { color: var(--primary-red); }
 
-/* --- VERTICAL PARALLEL CARDS --- */
+/* --- PROJECT CARDS --- */
 .projects-container {
     display: flex;
-    flex-direction: row; /* Forces parallel side-by-side layout */
+    flex-direction: row;
     justify-content: center;
     align-items: stretch;
     gap: 30px;
     padding: 120px 5% 60px;
-    justify-content: center; /* Centers cards horizontally */
-    flex-wrap: wrap; /* Wraps gracefully on mobile */
+    flex-wrap: wrap;
 }
 
 .project-card {
@@ -75,7 +76,7 @@ body {
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 40px 25px;
-    width: 320px; /* Fixed width for vertical "tower" look */
+    width: 320px;
     min-height: 480px;
     display: flex;
     flex-direction: column;
@@ -121,8 +122,8 @@ body {
 
 /* --- REVEAL ANIMATION --- */
 .reveal {
-    opacity: 1; /* Visible by default */
-    transform: translateY(0); /* No offset */
+    opacity: 1; /* visible by default */
+    transform: translateY(0);
     transition: 0.8s ease-out;
 }
 
@@ -131,113 +132,100 @@ body {
     transform: translateY(0);
 }
 
-/* ===================================================== */
-/* ================= FOOTER ============================= */
-/* ===================================================== */
-
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  background: #333;
-  color: #fff;
-}
-
-footer p {
-  margin-bottom: 5px;
-}
-
-/* ===================================================== */
-/* ================= MOBILE ============================= */
-/* ===================================================== */
-
-@media (max-width: 1000px) {
-  .site-header {
-    flex-direction: column;
-    align-items: center;
-    white-space: normal !important;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .nav-links a {
-    font-size: 1em;
-    margin: 6px 12px;
-  }
-
-  .company-name {
-    font-size: 22px;
-  }
-}
-
+/* --- HERO SECTION --- */
 .hero {
-  height: 100vh;
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  padding: 20px;
-
-  border-radius: 0;
-  margin: 0;
-
-  background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
-    url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+        url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero h1 {
-  font-family: 'Merriweather', serif;
-  font-size: 3em;
-  margin-bottom: 20px;
-  color: #ffffff;
-
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
+    font-family: 'Merriweather', serif;
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
 }
 
 .hero p {
-  font-size: 1.2em;
-  max-width: 700px;
-  margin: 0 auto 25px;
-  color: #f0f0f0;
-
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 0.3s;
+    font-size: 1.2em;
+    max-width: 700px;
+    margin: 0 auto 25px;
+    color: #f0f0f0;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.3s;
 }
 
 .hero a {
-  display: inline-block;
-  background: #A51C30;
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 6px;
-  font-weight: bold;
-
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 0.6s;
-
-  transition: all 0.3s ease;
+    display: inline-block;
+    background: var(--primary-red);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.6s;
+    transition: all 0.3s ease;
 }
 
 .hero a:hover {
-  background: #7f1524;
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    background: #7f1524;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #333;
+    color: #fff;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 1000px) {
+    .site-header {
+        flex-direction: column;
+        align-items: center;
+        white-space: normal !important;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        font-size: 1em;
+        margin: 6px 12px;
+    }
+
+    .company-name {
+        font-size: 22px;
+    }
+}
