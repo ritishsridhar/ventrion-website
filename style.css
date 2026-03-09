@@ -144,23 +144,6 @@ body {
 }
 
 
-.meow {
-    height: 10vh;
-    display: flex;
-    flex-direction: column; /* Ensures H1, P, and Button stack vertically */
-    align-items: center;    /* Horizontal center */
-    justify-content: center; /* Vertical center */
-    text-align: center;
-    padding: 0 20px;
-}
-
-.meow-content {
-    max-width: 900px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 /* --- HERO SECTION: Fixed Centering --- */
 .hero {
     height: 100vh;
@@ -218,7 +201,7 @@ body {
 /* --- FOOTER: Clean & Minimal --- */
 footer {
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 10px;
     background: #f8f9fa;
     color: var(--text-muted);
     border-top: 1px solid var(--glass-border);
@@ -257,6 +240,7 @@ footer {
         text-align: center;
     }
 }
+
 
 
 
