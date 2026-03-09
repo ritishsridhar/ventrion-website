@@ -1,10 +1,16 @@
-/* ================= GLOBAL BACKGROUND ================= */
-html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
+/* ================= PAGE ANIMATIONS (FOR SCRIPT.JS) ================= */
+body {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+body.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= GLOBAL BACKGROUND ================= */
 * {
   margin: 0;
   padding: 0;
@@ -14,46 +20,45 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
-  /* Full site EKG pattern background */
+  /* Fixed EKG Pattern as seen in your screenshot */
   background-color: #ffffff;
   background-image: url('https://i.imgur.com/9Qx4V7A.png'); 
   background-repeat: repeat; 
   background-size: 350px; 
   background-attachment: fixed;
-  padding-top: 110px; /* Space for the fixed header */
+  padding-top: 120px;
 }
 
 /* ================= HEADER & LOGO FIX ================= */
 .site-header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 110px; /* Fixed height to prevent giant header */
+  height: 120px; /* Fixed to prevent the massive header issue */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 40px;
+  padding: 0 40px;
   background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
 .header-left {
   display: flex;
-  flex-direction: column; /* Stacks name under logo */
+  flex-direction: column;
   align-items: flex-start;
 }
 
 .logo {
-  height: 55px; /* Forced professional size */
+  height: 70px; /* Scales your 'vdx enhanced.png' perfectly */
   width: auto;
   object-fit: contain;
 }
 
 .company-name {
   font-family: 'Merriweather', serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   color: #A51C30;
@@ -70,47 +75,41 @@ body {
   color: #A51C30;
   text-decoration: none;
   font-size: 14px;
+  transition: color 0.3s;
 }
 
-/* ================= HERO (DARK RESEARCH THEME) ================= */
+.nav-links a:hover {
+  color: #333;
+}
+
+/* ================= HERO SECTION ================= */
 .hero {
-  height: 65vh;
+  height: 60vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* Dark semi-transparent background to show EKG but keep text clear */
-  background: rgba(34, 34, 34, 0.85); 
+  /* Transparent dark overlay to show the medical background clearly */
+  background: rgba(10, 10, 10, 0.75); 
   color: #ffffff;
-  padding: 40px;
+  margin-bottom: 40px;
 }
 
 .hero h1 {
   font-family: 'Merriweather', serif;
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.25rem;
-  max-width: 800px;
-  margin: 0 auto 30px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 15px;
 }
 
 .cta-button {
   display: inline-block;
   background: #A51C30;
   color: #fff;
-  padding: 14px 28px;
+  padding: 12px 25px;
   border-radius: 4px;
-  font-weight: bold;
   text-decoration: none;
-  transition: transform 0.2s;
-}
-
-.cta-button:hover {
-  transform: scale(1.05);
+  font-weight: bold;
 }
 
 /* ================= INDIVIDUAL PARTNER CARDS ================= */
@@ -118,53 +117,50 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* Separates cards */
+  gap: 20px; /* Keeps cards separate, not clubbed together */
   padding: 40px 20px;
+  background: transparent;
 }
 
 .partner-card {
   background: #ffffff;
   border: 1px solid #ddd;
-  width: 140px;
-  height: 90px;
+  width: 160px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
 }
 
-/* ================= CONTENT SECTIONS ================= */
+.partner-card:hover {
+  transform: translateY(-5px);
+}
+
+.partner-card img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* ================= CONTENT REVEAL ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 section:not(.hero) {
   max-width: 1000px;
   margin: 40px auto;
   padding: 40px;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-}
-
-.section-image {
-  width: 100%;
-  border-radius: 4px;
-  margin-top: 20px;
-}
-
-/* ================= MOBILE NAVIGATION ================= */
-#menu-toggle { display: none; }
-
-@media (max-width: 1000px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  .menu-button-container { display: block; cursor: pointer; }
-  .hamburger { width: 25px; height: 3px; background: #A51C30; }
-  #menu-toggle:checked ~ .nav-links { display: flex; }
+  border-radius: 12px;
 }
