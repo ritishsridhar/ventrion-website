@@ -229,3 +229,30 @@ footer p {
         font-size: 22px;
     }
 }
+
+/* Hide by default on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  
+  .nav-links {
+    display: none; /* Hide links */
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #111;
+    flex-direction: column;
+  }
+
+  /* The 'active' class we toggle with JS */
+  .nav-links.active { display: flex; }
+}
