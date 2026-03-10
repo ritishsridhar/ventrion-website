@@ -119,15 +119,15 @@ body {
 }
 
 .hero h1 {
-    animation-delay: 0.1s;
+    animation-delay: 0.6s;
 }
 
 .hero h2 {
-    animation-delay: 0.25s;
+    animation-delay: 0.6s;
 }
 
 .hero p {
-    animation-delay: 0.4s;
+    animation-delay: 0.6s;
 }
 
 .hero a {
@@ -291,4 +291,5 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
+
 
