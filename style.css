@@ -62,8 +62,13 @@ body {
 .company-name {
     font-family: 'Merriweather', serif;
     font-weight: 700;
+    font-size: 1.6rem; /* Adjusted to match 45px visual height */
+    height: 35px;      /* Identical height to logo */
+    line-height: 45px; /* Vertically centers the text in that height */
     color: var(--primary-red);
     letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
 }
 
 .nav-links { 
@@ -252,3 +257,4 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
+
