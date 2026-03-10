@@ -3,18 +3,16 @@
     ========================================== */
 :root {
     --primary-red: #A51C30;           /* Professional Medical Red */
-    --light-bg: #fdfdfd;              /* Clean white for Hero */
-    --secondary-bg: #f4f7f8;          /* Soft gray for card section contrast */
+    --light-bg: #fdfdfd;              
+    --secondary-bg: #f4f7f8;          
     --card-bg: #ffffff;
     --text-main: #2d3436;
     --text-muted: #636e72;
-    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+    margin: 0; padding: 0; box-sizing: border-box; 
 }
 
 body {
@@ -26,22 +24,28 @@ body {
 }
 
 /* ==========================================
-    2. HEADER & NAVIGATION (Original Format)
+    2. HEADER & NAVIGATION (Edge Aligned)
     ========================================== */
 .site-header {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 85px; /* Consistent height for logo/text balance */
-    /* Returns to the original semi-transparent solid white */
-    background: rgba(255, 255, 255, 0.95); 
-    backdrop-filter: blur(10px);
+    height: 85px; 
+    /* Frosted texture from your reference */
+    background: rgba(255, 255, 255, 0.45); 
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    
+    /* This ensures logo is on the left and nav is on the right */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
+    justify-content: space-between; 
+    
+    /* Padding provides the "breathing room" at the edges */
+    padding: 0 5%; 
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -49,13 +53,14 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+    /* Ensures this container doesn't force itself to the center */
+    margin-right: auto; 
 }
 
 .logo { 
-    height: 45px; /* Sized to match text height */
+    height: 45px; 
     width: auto;
-    /* Keeps logo background transparent */
-    mix-blend-mode: multiply; 
+    mix-blend-mode: multiply; /* Logo transparency fix */
     filter: contrast(110%);
 }
 
@@ -63,43 +68,34 @@ body {
     font-family: 'Merriweather', serif;
     font-weight: 700;
     font-size: 1.6rem;
-    height: 45px;      /* Identical to logo height */
-    line-height: 45px; /* Perfect vertical centering */
+    height: 45px;      
+    line-height: 45px; 
     color: var(--primary-red);
     letter-spacing: 0.5px;
     display: flex;
     align-items: center;
+    white-space: nowrap; /* Prevents name from wrapping on smaller screens */
 }
 
 .nav-links { 
     display: flex; 
-    align-items: center; 
+    align-items: center;
+    /* Pushes links to the far right */
+    margin-left: auto; 
 }
 
 .nav-links a {
-    color: var(--text-muted);
+    color: #1a1a1a;
     text-decoration: none;
-    margin-left: 22px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    margin-left: 25px; /* Spacing between individual links */
+    font-size: 0.95rem;
+    font-weight: 600;
     position: relative;
     transition: 0.3s;
 }
 
 .nav-links a:hover { color: var(--primary-red); }
 
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 2px;
-    background: var(--primary-red);
-    transition: 0.3s;
-}
-
-.nav-links a:hover::after { width: 100%; }
 /* ==========================================
     3. HERO SECTION
     ========================================== */
@@ -111,21 +107,16 @@ body {
     justify-content: center;
     text-align: center;
     padding: 0 20px;
+    /* Dark EKG background */
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(18, 25, 33, 0.95)), 
                 url('ekg.png'); 
     background-size: cover;
     background-position: center;
 }
 
-.hero h1, .hero h2, .hero p, .hero a {
-    opacity: 0;
-    transform: translateY(25px);
-    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--primary-red); margin-bottom: 20px; animation-delay: 0.8s; }
-.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: #ffffff; margin-bottom: 20px; animation-delay: 0.8s; }
-.hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 20px; animation-delay: 0.8s; }
+.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--primary-red); margin-bottom: 20px; }
+.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: #ffffff; margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 20px; }
 
 .hero a {
     display: inline-block;
@@ -134,47 +125,37 @@ body {
     padding: 16px 45px; 
     text-decoration: none;
     border-radius: 50px; 
-    margin-bottom: 30px; 
     font-weight: bold;
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, heartPulse 2s infinite 2s; 
-    animation-delay: 0.8s, 2s;
-}
-
-@keyframes heartPulse {
-    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
-    50% { transform: scale(1.06); box-shadow: 0 4px 25px rgba(165, 28, 48, 0.7); }
-    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
 }
 
 /* ==========================================
-    4. PARALLEL PROJECT CARDS (GREY DOMINANT)
+    4. PARALLEL PROJECT CARDS (Grey Dominant Gradient)
+    ========================================== */
+/* ==========================================
+    4. PARALLEL PROJECT CARDS (Pure Grey Gradient)
     ========================================== */
 .projects-container {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: stretch;
     gap: 30px;
     padding: 120px 5% 80px;
     flex-wrap: wrap;
-    /* Transition: Dark Monitor -> Deep Gray (70%) -> Small White tail (100%) */
+    /* Transition: Dark Monitor Shade -> Light Clinical Grey -> Mid-Tone Grey */
     background: linear-gradient(to bottom, 
                 rgba(18, 25, 33, 1) 0%, 
-                #e2e6e9 90%, 
-                #d1d8dc 85%, 
-                /*#ffffff 0%);*/
+                #e2e6e9 45%, 
+                #d1d8dc 100%);
 }
 
 .project-card {
     background: var(--card-bg);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: 16px;
     padding: 40px 25px;
     width: 320px;
     min-height: 480px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
@@ -184,21 +165,18 @@ body {
     border-color: var(--primary-red);
     box-shadow: 0 20px 40px rgba(165, 28, 48, 0.15);
 }
-
-.project-card h3 {
-    color: var(--primary-red);
-    font-family: 'Merriweather', serif;
-    font-size: 1.3rem;
-    margin-bottom: 20px;
+/* ==========================================
+    EKG & REVEAL ANIMATIONS
+    ========================================== */
+@keyframes heartPulse {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
+    50% { transform: scale(1.06); box-shadow: 0 4px 25px rgba(165, 28, 48, 0.7); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
 }
 
-/* ==========================================
-    5. EKG ANIMATION
-    ========================================== */
-.ekg-container {
-    height: 80px;
-    margin-bottom: 25px;
-    width: 100%;
+@keyframes smoothFadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .ekg-line {
@@ -213,25 +191,24 @@ body {
 @keyframes heartbeat {
     0% { stroke-dashoffset: 1000; opacity: 1; }
     40% { stroke-dashoffset: 0; opacity: 1; }
-    80% { stroke-dashoffset: 0; opacity: 0; }
-    100% { stroke-dashoffset: 1000; opacity: 0; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
 }
 
-@keyframes smoothFadeUp { to { opacity: 1; transform: translateY(0); } }
-
 /* ==========================================
-    8. FOOTER
+    8. FOOTER (Frosted Glass Look)
     ========================================== */
 footer {
     text-align: center;
     padding: 20px 20px;
-    background: #ffffff; 
+    /* Matching the header's frosted transparency */
+    background: rgba(255, 255, 255, 0.45); 
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    
     color: var(--text-muted);
-    border-top: 1px solid var(--glass-border);
+    /* Subtle border to separate from the white gradient tail */
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 0.9rem;
+    position: relative;
+    z-index: 10;
 }
-
-
-
-
-
