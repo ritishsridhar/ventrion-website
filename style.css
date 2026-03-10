@@ -130,7 +130,7 @@ body {
     margin-bottom: 30px; 
     font-weight: bold;
     transition: transform 0.3s ease, background 0.3s ease;
-    animation-delay: 0.9s;
+    animation-delay: 0.8s;
 }
 
 .hero a:hover {
@@ -280,4 +280,5 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
+
 
