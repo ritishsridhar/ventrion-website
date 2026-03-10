@@ -2,9 +2,9 @@
    1. VARIABLES & RESET
    ========================================== */
 :root {
-    --primary-red: #A51C30;           /* Professional Medical Red */
-    --light-bg: #fdfdfd;              /* Clean white for Hero */
-    --secondary-bg: #f4f7f8;          /* Soft gray for card section contrast */
+    --primary-red: #A51C30;
+    --light-bg: #fdfdfd;
+    --secondary-bg: #f4f7f8;
     --card-bg: #ffffff;
     --text-main: #2d3436;
     --text-muted: #636e72;
@@ -77,11 +77,8 @@ body {
     transition: 0.3s;
 }
 
-.nav-links a:hover { 
-    color: var(--primary-red); 
-}
+.nav-links a:hover { color: var(--primary-red); }
 
-/* Underline hover effect */
 .nav-links a::after {
     content: "";
     position: absolute;
@@ -93,26 +90,30 @@ body {
     transition: 0.3s;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
+.nav-links a:hover::after { width: 100%; }
 
 /* ==========================================
-   3. HERO SECTION
+   3. HERO SECTION (With Synchronized Transitions)
    ========================================== */
 .hero {
     height: 100vh;
     display: flex;
-    flex-direction: column; /* Stacks text and button vertically */
-    align-items: center;    /* Centers horizontally */
-    justify-content: center; /* Centers vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 0 20px;
-    /* Matches light overlay style */
     background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)), 
                 url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?auto=format&fit=crop&q=80&w=1920');
     background-size: cover;
     background-position: center;
+}
+
+/* Common transition state for Hero H1, H2, P, and A */
+.hero h1, .hero h2, .hero p, .hero a {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
 }
 
 .hero h1 {
@@ -120,6 +121,7 @@ body {
     font-size: 3.5rem;
     color: var(--text-main);
     margin-bottom: 20px;
+    animation-delay: 0.2s;
 }
 
 .hero h2 {
@@ -127,6 +129,7 @@ body {
     font-size: 1.75rem;
     color: var(--text-main);
     margin-bottom: 20px;
+    animation-delay: 0.3s;
 }
 
 .hero p {
@@ -134,6 +137,7 @@ body {
     color: var(--text-muted);
     max-width: 700px;
     margin-bottom: 20px;
+    animation-delay: 0.5s;
 }
 
 .hero a {
@@ -143,26 +147,27 @@ body {
     padding: 16px 32px;
     text-decoration: none;
     border-radius: 6px;
-    margin-bottom: 30px; 
     font-weight: bold;
     transition: transform 0.3s ease, background 0.3s ease;
+    animation-delay: 0.7s;
 }
 
 .hero a:hover {
     background: #8e1829;
     transform: translateY(-3px);
+}
 
 /* ==========================================
    4. PARALLEL PROJECT CARDS
    ========================================== */
 .projects-container {
     display: flex;
-    flex-direction: row;      /* Parallel layout */
+    flex-direction: row;
     justify-content: center;
     align-items: stretch;
     gap: 30px;
     padding: 120px 5% 80px;
-    flex-wrap: wrap;          /* Responsive wrap */
+    flex-wrap: wrap;
     background: var(--secondary-bg);
 }
 
@@ -196,19 +201,12 @@ body {
 /* ==========================================
    5. EKG ANIMATION
    ========================================== */
-.ekg-container {
-    height: 80px;
-    margin-bottom: 25px;
-    width: 100%;
-}
-
 .ekg-line {
     stroke: var(--primary-red);
     stroke-width: 3;
     fill: none;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    /* Resting heartbeat timing */
     animation: heartbeat 4s linear infinite;
 }
 
@@ -220,7 +218,7 @@ body {
 }
 
 /* ==========================================
-   6. REVEAL ANIMATIONS (For JS)
+   6. REVEAL ANIMATIONS (Shared Keyframes)
    ========================================== */
 .reveal {
     opacity: 0;
@@ -231,6 +229,13 @@ body {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ==========================================
@@ -253,14 +258,12 @@ body {
     transition: 0.3s;
 }
 
-/* Hamburger to X Transformation */
 .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
 @media (max-width: 768px) {
     .menu-toggle { display: flex; }
-
     .nav-links {
         position: absolute;
         top: 75px;
@@ -272,20 +275,12 @@ body {
         overflow: hidden;
         opacity: 0;
         transition: 0.4s ease-in-out;
-        border-bottom: 1px solid var(--glass-border);
     }
-
     .nav-links.active {
         max-height: 500px;
         opacity: 1;
         padding: 20px 0;
     }
-
-    .nav-links a {
-        margin: 15px 0;
-        font-size: 1.1rem;
-    }
-
     .hero h1 { font-size: 2.2rem; }
 }
 
@@ -300,9 +295,3 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
-
-
-
-
-
-
