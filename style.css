@@ -103,8 +103,9 @@ body {
     justify-content: center;
     text-align: center;
     padding: 0 20px;
-    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)), 
-                url('https://images.unsplash.com/photo-1581092580499-4359c93e3b9f?auto=format&fit=crop&q=80&w=1920');
+    /* Updated to use ekg.png with a dark overlay for readability */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                url('ekg.png'); 
     background-size: cover;
     background-position: center;
 }
@@ -116,33 +117,61 @@ body {
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--text-main); margin-bottom: 20px; animation-delay: 0.8s; }
-.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: var(--text-main); margin-bottom: 20px; animation-delay: 0.8s; }
-.hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin-bottom: 20px; animation-delay: 0.8s; }
+.hero h1 { 
+    font-family: 'Merriweather', serif; 
+    font-size: 3.5rem; 
+    color: var(--primary-red); /* Set to Red to match mockup */
+    margin-bottom: 20px; 
+    animation-delay: 0.8s; 
+}
+
+.hero h2 { 
+    font-family: 'Merriweather', serif; 
+    font-size: 1.75rem; 
+    color: #ffffff; /* Changed to white for dark background */
+    margin-bottom: 20px; 
+    animation-delay: 0.8s; 
+}
+
+.hero p { 
+    font-size: 1.2rem; 
+    color: rgba(255, 255, 255, 0.9); /* Changed to light grey for dark background */
+    max-width: 700px; 
+    margin-bottom: 20px; 
+    animation-delay: 0.8s; 
+}
 
 .hero a {
     display: inline-block;
     background: var(--primary-red);
     color: #fff;
-    padding: 16px 32px;
+    padding: 16px 45px; /* Increased padding for pill shape */
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 50px; /* Pill shape from mockup */
     margin-bottom: 30px; 
     font-weight: bold;
     transition: transform 0.3s ease, background 0.3s ease;
-    animation-delay: 0.8s;
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, heartPulse 2s infinite 2s; /* Added pulse animation */
+    animation-delay: 0.8s, 2s;
 }
 
 .hero a:hover {
     background: #8e1829;
-    transform: translateY(-3px);
-} /* Fixed: Missing closing bracket was here */
+    transform: translateY(-3px) scale(1.05);
+}
 
 @keyframes smoothFadeUp {
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Heartbeat Pulse Animation */
+@keyframes heartPulse {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
+    50% { transform: scale(1.06); box-shadow: 0 4px 25px rgba(165, 28, 48, 0.7); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
 }
 
 /* ==========================================
@@ -280,5 +309,3 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
-
-
