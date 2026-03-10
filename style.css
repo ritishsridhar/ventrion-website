@@ -41,7 +41,6 @@ body {
     padding: 0 5%;
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
-    transition: all 0.3s ease;
 }
 
 .header-left {
@@ -62,10 +61,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-.nav-links { 
-    display: flex; 
-    align-items: center; 
-}
+.nav-links { display: flex; align-items: center; }
 
 .nav-links a {
     color: var(--text-muted);
@@ -93,7 +89,7 @@ body {
 .nav-links a:hover::after { width: 100%; }
 
 /* ==========================================
-   3. HERO SECTION (Ultra-Smooth Transitions)
+   3. HERO SECTION (Ultra-Smooth Staggered)
    ========================================== */
 .hero {
     height: 100vh;
@@ -109,39 +105,31 @@ body {
     background-position: center;
 }
 
-/* Using a Cubic Bezier for "Smoothness"
-   This curve (0.16, 1, 0.3, 1) is the industry standard for elegant UI 
-*/
+/* INDUSTRY STANDARD SMOOTH CURVE */
 .hero h1, .hero h2, .hero p, .hero a {
     opacity: 0;
-    transform: translateY(25px); /* Reduced distance for subtler motion */
+    transform: translateY(25px);
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero h1 {
-    animation-delay: 0.6s;
-}
-
-.hero h2 {
-    animation-delay: 0.6s;
-}
-
-.hero p {
-    animation-delay: 0.6s;
-}
-
-.hero a {
-    animation-delay: 0.6s;
-    /* Keeps button centered and allows transform */
+/* STAGGERED DELAYS FOR SMOOTHNESS */
+.hero h1 { animation-delay: 0.2s; font-size: 3.5rem; }
+.hero h2 { animation-delay: 0.4s; font-size: 1.75rem; }
+.hero p  { animation-delay: 0.6s; }
+.hero a  { 
+    animation-delay: 0.8s; 
     display: inline-block; 
+    background: var(--primary-red);
+    color: #fff;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Smoothed Keyframes */
 @keyframes smoothFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
     to {
         opacity: 1;
         transform: translateY(0);
@@ -150,7 +138,8 @@ body {
 
 .hero a:hover {
     background: #8e1829;
-    transform: translateY(-3px);
+    transform: translateY(-4px); /* Works properly with the 'forwards' state */
+    box-shadow: 0 10px 20px rgba(165, 28, 48, 0.2);
 }
 
 /* ==========================================
@@ -177,7 +166,8 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* Uses smooth bezier for hover too */
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
@@ -185,13 +175,6 @@ body {
     transform: translateY(-12px);
     border-color: var(--primary-red);
     box-shadow: 0 20px 40px rgba(165, 28, 48, 0.1);
-}
-
-.project-card h3 {
-    color: var(--primary-red);
-    font-family: 'Merriweather', serif;
-    font-size: 1.3rem;
-    margin-bottom: 20px;
 }
 
 /* ==========================================
@@ -214,24 +197,17 @@ body {
 }
 
 /* ==========================================
-   6. REVEAL ANIMATIONS (Shared Keyframes)
+   6. REVEAL ANIMATIONS (Scroll Reveal)
    ========================================== */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* ==========================================
@@ -244,7 +220,6 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1001;
 }
 
 .menu-toggle span {
@@ -278,6 +253,7 @@ body {
         padding: 20px 0;
     }
     .hero h1 { font-size: 2.2rem; }
+    .projects-container { flex-direction: column; align-items: center; }
 }
 
 /* ==========================================
@@ -291,5 +267,3 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
-
-
