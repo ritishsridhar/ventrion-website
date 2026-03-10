@@ -124,7 +124,7 @@ body {
 
 .hero h2 {
     font-family: 'Merriweather', serif;
-    font-size: 3.5rem;
+    font-size: 1.75rem;
     color: var(--text-main);
     margin-bottom: 20px;
 }
@@ -133,7 +133,7 @@ body {
     font-size: 1.2rem;
     color: var(--text-muted);
     max-width: 700px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .hero a {
@@ -300,6 +300,7 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
+
 
 
 
