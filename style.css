@@ -116,9 +116,9 @@ body {
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--text-main); margin-bottom: 20px; animation-delay: 0.2s; }
-.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: var(--text-main); margin-bottom: 20px; animation-delay: 0.35s; }
-.hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin-bottom: 20px; animation-delay: 0.5s; }
+.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--text-main); margin-bottom: 20px; animation-delay: 0.8s; }
+.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: var(--text-main); margin-bottom: 20px; animation-delay: 0.8s; }
+.hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin-bottom: 20px; animation-delay: 0.8s; }
 
 .hero a {
     display: inline-block;
@@ -130,7 +130,7 @@ body {
     margin-bottom: 30px; 
     font-weight: bold;
     transition: transform 0.3s ease, background 0.3s ease;
-    animation-delay: 0.7s;
+    animation-delay: 0.9s;
 }
 
 .hero a:hover {
@@ -274,9 +274,10 @@ body {
     ========================================== */
 footer {
     text-align: center;
-    padding: 40px 20px;
+    padding: 20px 20px;
     background: var(--secondary-bg);
     color: var(--text-muted);
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
+
