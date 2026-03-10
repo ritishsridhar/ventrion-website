@@ -157,6 +157,15 @@ body {
     transform: translateY(-3px);
 }
 
+.hero h1, 
+.hero h2, 
+.hero p, 
+.hero a {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
+}
+
 /* ==========================================
    4. PARALLEL PROJECT CARDS
    ========================================== */
@@ -305,5 +314,6 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
+
 
 
