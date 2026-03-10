@@ -72,7 +72,7 @@ body {
     color: var(--primary-red);
     letter-spacing: 0.5px;
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
 }
 
 .nav-links a {
@@ -217,4 +217,5 @@ footer {
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
+
 
