@@ -1,11 +1,19 @@
 {
   "name": "Ventrion Diagnostics",
   "short_name": "Ventrion",
+  "description": "Advancing cardiovascular research and ethical advocacy through Ventrion Lab.",
   "start_url": "/index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#fdfdfd",
   "theme_color": "#A51C30",
   "icons": [
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "vdx enhanced.png",
       "sizes": "192x192",
