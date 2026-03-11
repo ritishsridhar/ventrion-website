@@ -24,77 +24,75 @@ body {
 }
 
 /* ==========================================
-    2. HEADER & NAVIGATION (Edge Aligned)
+    2. HEADER & NAVIGATION
     ========================================== */
 .site-header {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 85px; 
-    /* Frosted texture from your reference */
-    background: rgba(255, 255, 255, 0.45); 
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    
-    /* This ensures logo is on the left and nav is on the right */
+    height: 75px;
+    background: linear-gradient(to bottom, rgba(18, 25, 33, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
-    justify-content: space-between; 
-    
-    /* Padding provides the "breathing room" at the edges */
-    padding: 0 5%; 
+    justify-content: space-between;
+    padding: 0 5%;
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 15px;
-    /* Ensures this container doesn't force itself to the center */
-    margin-right: auto; 
+    gap: 12px;
 }
 
 .logo { 
     height: 35px; 
     width: auto;
-    mix-blend-mode: multiply; /* Logo transparency fix */
+    mix-blend-mode: multiply; 
     filter: contrast(110%);
 }
 
 .company-name {
     font-family: 'Merriweather', serif;
     font-weight: 700;
-    font-size: 1.6rem;
-    height: 35px;      
-    line-height: 35px; 
     color: var(--primary-red);
     letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap; /* Prevents name from wrapping on smaller screens */
 }
 
 .nav-links { 
     display: flex; 
-    align-items: center;
-    /* Pushes links to the far right */
-    margin-left: auto; 
+    align-items: center; 
 }
 
 .nav-links a {
-    color: #1a1a1a;
+    color: #333; 
     text-decoration: none;
-    margin-left: 25px; /* Spacing between individual links */
-    font-size: 0.95rem;
+    margin-left: 22px;
+    font-size: 0.9rem;
     font-weight: 600;
     position: relative;
     transition: 0.3s;
 }
 
 .nav-links a:hover { color: var(--primary-red); }
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: var(--primary-red);
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
 
 /* ==========================================
     3. HERO SECTION
@@ -225,4 +223,5 @@ footer {
     position: relative;
     z-index: 10;
 }
+
 
