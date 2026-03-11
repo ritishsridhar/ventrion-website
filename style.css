@@ -39,6 +39,7 @@ body {
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
     transition: all 0.3s ease;
+    opacity: 1;
 }
 
 .header-left {
@@ -216,3 +217,4 @@ footer {
     position: relative;
     z-index: 10;
 }
+
