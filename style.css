@@ -31,16 +31,13 @@ body {
     top: 0;
     width: 100%;
     height: 75px;
-    background: #fff;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 5%;
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -53,7 +50,7 @@ body {
 .logo { 
     height: 35px; 
     width: auto;
-    mix-blend-mode: multiply; 
+    /*mix-blend-mode: multiply;*/ 
     filter: contrast(110%);
 }
 
@@ -62,6 +59,9 @@ body {
     font-weight: 700;
     color: var(--primary-red);
     letter-spacing: 0.5px;
+    font-size: 1.4rem;
+    height: 35px; 
+    line-height: 35px;
 }
 
 .nav-links { 
@@ -105,8 +105,8 @@ body {
     justify-content: center;
     text-align: center;
     padding: 0 20px;
-    /* Dark EKG background */
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(18, 25, 33, 0.95)), 
+    /* REDUCED GREY TINT: Lowered opacity from 0.7/0.95 to 0.4/0.7 to show EKG clearly */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(18, 25, 33, 0.7)), 
                 url('ekg.png'); 
     background-size: cover;
     background-position: center;
@@ -118,9 +118,9 @@ body {
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--primary-red); margin-bottom: 20px; animation-delay: 0.8s; }
-.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: #ffffff; margin-bottom: 20px; animation-delay: 0.8s; }
-.hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 20px; animation-delay: 0.8s; }
+.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--primary-red); margin-bottom: 20px; animation-delay: 0.2s; }
+.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: #ffffff; margin-bottom: 20px; animation-delay: 0.4s; }
+.hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 20px; animation-delay: 0.6s; }
 
 .hero a {
     display: inline-block;
@@ -132,12 +132,15 @@ body {
     margin-bottom: 30px; 
     font-weight: bold;
     transition: transform 0.3s ease, background 0.3s ease;
+    /* JOIN BUTTON VISIBILITY: Animation restored and z-index added */
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, heartPulse 2s infinite 2s; 
     animation-delay: 0.8s, 2s;
+    position: relative;
+    z-index: 5;
 }
 
 /* ==========================================
-    4. PARALLEL PROJECT CARDS (Pure Grey Gradient)
+    4. PARALLEL PROJECT CARDS (Deep Grey Gradient)
     ========================================== */
 .projects-container {
     display: flex;
@@ -145,10 +148,11 @@ body {
     gap: 30px;
     padding: 120px 5% 80px;
     flex-wrap: wrap;
-    /* Transition: Dark Monitor Shade -> Light Clinical Grey -> Mid-Tone Grey */
+    /* INCREASED DARK GREY: Matches the tint of the EKG section better */
     background: linear-gradient(to bottom, 
                 rgba(18, 25, 33, 1) 0%, 
-                #e2e6e9 45%, 
+                rgba(18, 25, 33, 1) 15%, 
+                #e2e6e9 65%, 
                 #d1d8dc 100%);
 }
 
@@ -171,24 +175,18 @@ body {
 }
 
 /* ==========================================
-    6. REVEAL ANIMATIONS
-    ========================================== */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.active { opacity: 1; transform: translateY(0); }
+    6. REVEAL ANIMATIONS & KEYFRAMES
+    ========================================= */
+@keyframes smoothFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-/* ==========================================
-    EKG & 
-    ========================================== */
 @keyframes heartPulse {
     0% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
     50% { transform: scale(1.06); box-shadow: 0 4px 25px rgba(165, 28, 48, 0.7); }
     100% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
 }
-
-/*@keyframes smoothFadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}*/
 
 .ekg-line {
     stroke: var(--primary-red);
@@ -211,18 +209,10 @@ body {
 footer {
     text-align: center;
     padding: 10px 10px;
-    /* Matching the header's frosted transparency */
-    background: #fff;
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    
+    background: #ffffff;
     color: var(--text-muted);
-    /* Subtle border to separate from the white gradient tail */
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 0.9rem;
     position: relative;
     z-index: 10;
 }
-
-
-
