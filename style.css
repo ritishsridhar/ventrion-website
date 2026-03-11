@@ -58,7 +58,7 @@ body {
 }
 
 .logo { 
-    height: 45px; 
+    height: 35px; 
     width: auto;
     mix-blend-mode: multiply; /* Logo transparency fix */
     filter: contrast(110%);
@@ -68,8 +68,8 @@ body {
     font-family: 'Merriweather', serif;
     font-weight: 700;
     font-size: 1.6rem;
-    height: 45px;      
-    line-height: 45px; 
+    height: 35px;      
+    line-height: 35px; 
     color: var(--primary-red);
     letter-spacing: 0.5px;
     display: flex;
@@ -114,9 +114,15 @@ body {
     background-position: center;
 }
 
-.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--primary-red); margin-bottom: 20px; }
-.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: #ffffff; margin-bottom: 20px; }
-.hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 20px; }
+.hero h1, .hero h2, .hero p, .hero a {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--primary-red); margin-bottom: 20px; animation-delay: 0.8s; }
+.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: #ffffff; margin-bottom: 20px; animation-delay: 0.8s; }
+.hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 20px; animation-delay: 0.8s; }
 
 .hero a {
     display: inline-block;
@@ -125,13 +131,13 @@ body {
     padding: 16px 45px; 
     text-decoration: none;
     border-radius: 50px; 
+    margin-bottom: 30px; 
     font-weight: bold;
+    transition: transform 0.3s ease, background 0.3s ease;
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, heartPulse 2s infinite 2s; 
+    animation-delay: 0.8s, 2s;
 }
 
-/* ==========================================
-    4. PARALLEL PROJECT CARDS (Grey Dominant Gradient)
-    ========================================== */
 /* ==========================================
     4. PARALLEL PROJECT CARDS (Pure Grey Gradient)
     ========================================== */
@@ -165,8 +171,15 @@ body {
     border-color: var(--primary-red);
     box-shadow: 0 20px 40px rgba(165, 28, 48, 0.15);
 }
+
 /* ==========================================
-    EKG & REVEAL ANIMATIONS
+    6. REVEAL ANIMATIONS
+    ========================================== */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* ==========================================
+    EKG & 
     ========================================== */
 @keyframes heartPulse {
     0% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
@@ -199,7 +212,7 @@ body {
     ========================================== */
 footer {
     text-align: center;
-    padding: 20px 20px;
+    padding: 10px 10px;
     /* Matching the header's frosted transparency */
     background: rgba(255, 255, 255, 0.45); 
     backdrop-filter: blur(20px) saturate(160%);
@@ -212,3 +225,4 @@ footer {
     position: relative;
     z-index: 10;
 }
+
