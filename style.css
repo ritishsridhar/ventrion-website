@@ -21,6 +21,7 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
+    padding-top: 75px;
 }
 
 /* ==========================================
@@ -51,7 +52,6 @@ body {
 .logo { 
     height: 35px; 
     width: auto;
-    /*mix-blend-mode: multiply;*/ 
     filter: contrast(110%);
 }
 
@@ -67,7 +67,7 @@ body {
 
 .nav-links { 
     display: flex; 
-    align-items: center; 
+    align-items: center;
 }
 
 .nav-links a {
@@ -80,7 +80,9 @@ body {
     transition: 0.3s;
 }
 
-.nav-links a:hover { color: var(--primary-red); }
+.nav-links a:hover { 
+    color: var(--primary-red); 
+}
 
 .nav-links a::after {
     content: "";
@@ -93,7 +95,48 @@ body {
     transition: 0.3s;
 }
 
-.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover::after { 
+    width: 100%; 
+}
+
+/* ==========================================
+    HAMBURGER MENU STYLES
+    ========================================== */
+
+/* Hide hamburger by default (desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-red);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger active state (X shape) */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -8px);
+}
 
 /* ==========================================
     3. HERO SECTION
@@ -106,7 +149,6 @@ body {
     justify-content: center;
     text-align: center;
     padding: 0 20px;
-    /* REDUCED GREY TINT: Lowered opacity from 0.7/0.95 to 0.4/0.7 to show EKG clearly */
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(18, 25, 33, 0.7)), 
                 url('ekg.png'); 
     background-size: cover;
@@ -119,9 +161,29 @@ body {
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero h1 { font-family: 'Merriweather', serif; font-size: 3.5rem; color: var(--primary-red); margin-bottom: 20px; animation-delay: 0.2s; }
-.hero h2 { font-family: 'Merriweather', serif; font-size: 1.75rem; color: #ffffff; margin-bottom: 20px; animation-delay: 0.4s; }
-.hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 20px; animation-delay: 0.6s; }
+.hero h1 { 
+    font-family: 'Merriweather', serif; 
+    font-size: 3.5rem; 
+    color: var(--primary-red); 
+    margin-bottom: 20px; 
+    animation-delay: 0.2s; 
+}
+
+.hero h2 { 
+    font-family: 'Merriweather', serif; 
+    font-size: 1.75rem; 
+    color: #ffffff; 
+    margin-bottom: 20px; 
+    animation-delay: 0.4s; 
+}
+
+.hero p { 
+    font-size: 1.2rem; 
+    color: rgba(255, 255, 255, 0.9); 
+    max-width: 700px; 
+    margin-bottom: 20px; 
+    animation-delay: 0.6s; 
+}
 
 .hero a {
     display: inline-block;
@@ -133,7 +195,6 @@ body {
     margin-bottom: 30px; 
     font-weight: bold;
     transition: transform 0.3s ease, background 0.3s ease;
-    /* JOIN BUTTON VISIBILITY: Animation restored and z-index added */
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, heartPulse 2s infinite 2s; 
     animation-delay: 0.8s, 2s;
     position: relative;
@@ -149,7 +210,6 @@ body {
     gap: 30px;
     padding: 120px 5% 80px;
     flex-wrap: wrap;
-    /* INCREASED DARK GREY: Matches the tint of the EKG section better */
     background: linear-gradient(to bottom, 
                 rgba(18, 25, 33, 1) 0%, 
                 rgba(18, 25, 33, 1) 15%, 
@@ -219,80 +279,101 @@ footer {
 }
 
 /* ==========================================
-    HAMBURGER MENU - Add to your CSS
+    MOBILE RESPONSIVE (768px and below)
     ========================================== */
-
-/* Hide hamburger by default (visible only on mobile) */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    gap: 6px;
-    padding: 10px;
-    z-index: 1001;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--primary-red);
-    border-radius: 2px;
-    transition: 0.3s ease;
-}
-
-/* Hamburger active state (X shape) */
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -7px);
-}
-
-/* Mobile Navigation Menu */
 @media (max-width: 768px) {
+    body {
+        padding-top: 75px;
+    }
+
+    /* Show hamburger on mobile */
     .hamburger {
         display: flex;
     }
 
+    /* Transform nav-links to dropdown menu */
     .nav-links {
         position: fixed;
         top: 75px;
         left: 0;
         width: 100%;
+        height: auto;
         background: #ffffff;
         flex-direction: column;
-        padding: 20px 0;
+        padding: 0;
         border-bottom: 1px solid var(--glass-border);
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
+    /* Menu expands when active */
     .nav-links.active {
-        max-height: 300px;
+        max-height: 400px;
     }
 
     .nav-links a {
-        padding: 15px 20px;
+        padding: 16px 20px;
         margin-left: 0;
-        border-bottom: 1px solid var(--glass-border);
+        border-bottom: 1px solid rgba(165, 28, 48, 0.1);
         text-align: left;
         display: block;
+        width: 100%;
+        transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .nav-links a::after {
-        display: none;
+    .nav-links a:last-child {
+        border-bottom: none;
     }
 
     .nav-links a:hover {
         background: var(--secondary-bg);
+        color: var(--primary-red);
+    }
+
+    /* Remove desktop hover underline on mobile */
+    .nav-links a::after {
+        display: none;
+    }
+
+    /* Adjust hero text for mobile */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.25rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Adjust project cards for mobile */
+    .projects-container {
+        padding: 80px 5% 60px;
+        gap: 20px;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 320px;
+        min-height: 400px;
+        padding: 30px 20px;
     }
 }
 
+/* ==========================================
+    TABLET RESPONSIVE (769px - 1024px)
+    ========================================== */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .nav-links a {
+        margin-left: 16px;
+        font-size: 0.85rem;
+    }
+
+    .project-card {
+        width: 280px;
+    }
+}
