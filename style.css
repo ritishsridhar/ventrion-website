@@ -12,7 +12,13 @@
 }
 
 * { 
-    margin: 0; padding: 0; box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -47,12 +53,18 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 .logo { 
     height: 35px; 
     width: auto;
     filter: contrast(110%);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .company-name {
@@ -63,21 +75,23 @@ body {
     font-size: 1.4rem;
     height: 35px; 
     line-height: 35px;
+    white-space: nowrap;
 }
 
 .nav-links { 
     display: flex; 
     align-items: center;
+    gap: 0;
 }
 
 .nav-links a {
     color: #333; 
     text-decoration: none;
-    margin-left: 22px;
+    padding: 8px 22px;
     font-size: 0.9rem;
     font-weight: 600;
     position: relative;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover { 
@@ -87,23 +101,23 @@ body {
 .nav-links a::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: -5px;
+    left: 50%;
+    bottom: 0;
     width: 0;
     height: 2px;
     background: var(--primary-red);
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
 .nav-links a:hover::after { 
-    width: 100%; 
+    width: 80%;
 }
 
 /* ==========================================
     HAMBURGER MENU STYLES
     ========================================== */
 
-/* Hide hamburger by default (desktop) */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -113,6 +127,13 @@ body {
     gap: 6px;
     padding: 10px;
     z-index: 1001;
+    flex-shrink: 0;
+}
+
+.hamburger:focus {
+    outline: 2px solid var(--primary-red);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 .hamburger span {
@@ -120,8 +141,9 @@ body {
     height: 3px;
     background: var(--primary-red);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: center;
+    display: block;
 }
 
 /* Hamburger active state (X shape) */
@@ -150,39 +172,39 @@ body {
     text-align: center;
     padding: 0 20px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(18, 25, 33, 0.7)), 
-                url('ekg.png'); 
-    background-size: cover;
-    background-position: center;
-}
-
-.hero h1, .hero h2, .hero p, .hero a {
-    opacity: 0;
-    transform: translateY(25px);
-    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                url('ekg.png') center/cover no-repeat; 
+    margin-top: -75px;
+    padding-top: 75px;
 }
 
 .hero h1 { 
     font-family: 'Merriweather', serif; 
     font-size: 3.5rem; 
     color: var(--primary-red); 
-    margin-bottom: 20px; 
-    animation-delay: 0.2s; 
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(25px);
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
 .hero h2 { 
     font-family: 'Merriweather', serif; 
     font-size: 1.75rem; 
     color: #ffffff; 
-    margin-bottom: 20px; 
-    animation-delay: 0.4s; 
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(25px);
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 .hero p { 
     font-size: 1.2rem; 
     color: rgba(255, 255, 255, 0.9); 
     max-width: 700px; 
-    margin-bottom: 20px; 
-    animation-delay: 0.6s; 
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(25px);
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
 .hero a {
@@ -194,15 +216,28 @@ body {
     border-radius: 50px; 
     margin-bottom: 30px; 
     font-weight: bold;
-    transition: transform 0.3s ease, background 0.3s ease;
-    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, heartPulse 2s infinite 2s; 
-    animation-delay: 0.8s, 2s;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(25px);
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards, heartPulse 2s infinite 2.8s;
     position: relative;
     z-index: 5;
+    border: none;
+    cursor: pointer;
+}
+
+.hero a:hover {
+    background: #8a1625;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(165, 28, 48, 0.3);
+}
+
+.hero a:active {
+    transform: translateY(0);
 }
 
 /* ==========================================
-    4. PARALLEL PROJECT CARDS (Deep Grey Gradient)
+    4. PROJECT CARDS
     ========================================== */
 .projects-container {
     display: flex;
@@ -219,14 +254,40 @@ body {
 
 .project-card {
     background: var(--card-bg);
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 16px;
     padding: 40px 25px;
     width: 320px;
     min-height: 480px;
     text-align: center;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.project-card h3 {
+    color: var(--text-main);
+    font-size: 1.3rem;
+    margin: 20px 0 15px;
+    font-weight: 700;
+}
+
+.project-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.ekg-container {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.ekg-container svg {
+    width: 100%;
+    height: 100%;
 }
 
 .project-card:hover {
@@ -236,17 +297,47 @@ body {
 }
 
 /* ==========================================
-    6. REVEAL ANIMATIONS & KEYFRAMES
+    5. REVEAL ANIMATIONS & KEYFRAMES
     ========================================= */
 @keyframes smoothFadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 @keyframes heartPulse {
-    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
-    50% { transform: scale(1.06); box-shadow: 0 4px 25px rgba(165, 28, 48, 0.7); }
-    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); }
+    0% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); 
+    }
+    50% { 
+        transform: scale(1.06); 
+        box-shadow: 0 4px 25px rgba(165, 28, 48, 0.7); 
+    }
+    100% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 15px rgba(165, 28, 48, 0.4); 
+    }
+}
+
+@keyframes heartbeat {
+    0% { 
+        stroke-dashoffset: 1000; 
+        opacity: 1; 
+    }
+    40% { 
+        stroke-dashoffset: 0; 
+        opacity: 1; 
+    }
+    100% { 
+        stroke-dashoffset: 0; 
+        opacity: 0; 
+    }
 }
 
 .ekg-line {
@@ -258,24 +349,42 @@ body {
     animation: heartbeat 4s linear infinite;
 }
 
-@keyframes heartbeat {
-    0% { stroke-dashoffset: 1000; opacity: 1; }
-    40% { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 0; }
-}
-
 /* ==========================================
-    8. FOOTER (Frosted Glass Look)
+    6. FOOTER
     ========================================== */
 footer {
     text-align: center;
-    padding: 10px 10px;
+    padding: 40px 20px;
     background: #ffffff;
     color: var(--text-muted);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
     position: relative;
     z-index: 10;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer p:first-child {
+    font-style: italic;
+    color: var(--text-main);
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+    REVEAL CLASS (For Scroll Animations)
+    ========================================== */
+.reveal {
+    opacity: 0;
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ==========================================
@@ -286,12 +395,20 @@ footer {
         padding-top: 75px;
     }
 
+    .site-header {
+        padding: 0 4%;
+    }
+
+    .company-name {
+        font-size: 1.1rem;
+    }
+
     /* Show hamburger on mobile */
     .hamburger {
         display: flex;
     }
 
-    /* Transform nav-links to dropdown menu */
+    /* Hide nav links on desktop, show on mobile when active */
     .nav-links {
         position: fixed;
         top: 75px;
@@ -306,11 +423,12 @@ footer {
         overflow: hidden;
         transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        gap: 0;
     }
 
     /* Menu expands when active */
     .nav-links.active {
-        max-height: 400px;
+        max-height: 500px;
     }
 
     .nav-links a {
@@ -327,6 +445,10 @@ footer {
         border-bottom: none;
     }
 
+    .nav-links a:active {
+        background: var(--secondary-bg);
+    }
+
     .nav-links a:hover {
         background: var(--secondary-bg);
         color: var(--primary-red);
@@ -337,30 +459,55 @@ footer {
         display: none;
     }
 
-    /* Adjust hero text for mobile */
+    /* Adjust hero section */
+    .hero {
+        padding: 0 20px;
+    }
+
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
     }
 
     .hero h2 {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
     }
 
     .hero p {
         font-size: 1rem;
+        max-width: 90%;
+    }
+
+    .hero a {
+        padding: 14px 35px;
+        font-size: 0.95rem;
     }
 
     /* Adjust project cards for mobile */
     .projects-container {
-        padding: 80px 5% 60px;
+        padding: 60px 5% 50px;
         gap: 20px;
     }
 
     .project-card {
         width: 100%;
-        max-width: 320px;
-        min-height: 400px;
+        max-width: 100%;
+        min-height: auto;
         padding: 30px 20px;
+    }
+
+    .ekg-container {
+        height: 60px;
+    }
+
+    /* Footer adjustments */
+    footer {
+        padding: 30px 20px;
+    }
+
+    footer p:first-child {
+        font-size: 0.95rem;
     }
 }
 
@@ -368,12 +515,44 @@ footer {
     TABLET RESPONSIVE (769px - 1024px)
     ========================================== */
 @media (max-width: 1024px) and (min-width: 769px) {
+    .company-name {
+        font-size: 1.2rem;
+    }
+
     .nav-links a {
-        margin-left: 16px;
+        padding: 8px 16px;
         font-size: 0.85rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .projects-container {
+        gap: 25px;
+        padding: 100px 5% 70px;
     }
 
     .project-card {
         width: 280px;
+    }
+}
+
+/* ==========================================
+    LARGE SCREENS (1025px and above)
+    ========================================== */
+@media (min-width: 1025px) {
+    .hamburger {
+        display: none !important;
+    }
+
+    .nav-links {
+        display: flex !important;
+        position: static !important;
+        max-height: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        top: auto !important;
     }
 }
