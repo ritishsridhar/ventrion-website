@@ -218,3 +218,81 @@ footer {
     z-index: 10;
 }
 
+/* ==========================================
+    HAMBURGER MENU - Add to your CSS
+    ========================================== */
+
+/* Hide hamburger by default (visible only on mobile) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-red);
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* Hamburger active state (X shape) */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -7px);
+}
+
+/* Mobile Navigation Menu */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--glass-border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-links.active {
+        max-height: 300px;
+    }
+
+    .nav-links a {
+        padding: 15px 20px;
+        margin-left: 0;
+        border-bottom: 1px solid var(--glass-border);
+        text-align: left;
+        display: block;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover {
+        background: var(--secondary-bg);
+    }
+}
+
