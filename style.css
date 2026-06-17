@@ -256,12 +256,13 @@ body {
     ========================================== */
 .projects-container {
     display: grid;
-    /* Starts as 3 equal columns, can animate seamlessly on hover */
+    /* DEFAULT STATE: Three equal columns */
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr;
     justify-content: center;
     gap: 30px;
     padding: 120px 5% 80px;
+    /* UNALTERED BACKGROUND: Kept exactly as you provided */
     background: linear-gradient(to bottom, 
                 rgba(18, 25, 33, 1) 0%, 
                 rgba(18, 25, 33, 1) 15%, 
@@ -269,15 +270,14 @@ body {
                 #d1d8dc 100%);
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 580px;
     box-sizing: border-box;
-    /* Smoothly morphs the columns and gap sizes when hovered */
+    /* Smooth transition for when the columns fluidly morph on hover */
     transition: grid-template-columns 0.6s cubic-bezier(0.16, 1, 0.3, 1), gap 0.6s ease;
 }
 
-/* Morph columns on hover: Left side widens, right side column squishes to hold the stack */
+/* Morph grid layout on hover: Active side widens, inactive side scales down for the stack */
 .projects-container:hover {
-    grid-template-columns: 1.8fr 1fr;
+    grid-template-columns: 2.2fr 1fr;
     gap: 20px;
 }
 
@@ -293,11 +293,15 @@ body {
     opacity: 0;
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     box-sizing: border-box;
-    /* Expanded transitions to handle padding, heights, and internal spacing changes */
+    /* Handles padding, scale, and internal spacing transitions smoothly */
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
     
-    /* Default: cards take up the full height of both grid rows */
+    /* Default: cards fill the entire height of the container across both rows */
     grid-row: 1 / span 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .project-card h3 {
@@ -325,6 +329,59 @@ body {
 .ekg-container svg {
     width: 100%;
     height: 100%;
+}
+
+/* ==========================================
+    NEW DYNAMIC HOVER INTERACTION STATES
+   ========================================== */
+
+/* 1. THE HOVERED CARD: Dynamically scales wide on the left side */
+.project-card:hover {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 500px; /* Aligns smoothly with the combined height of the stacked squares */
+    border-color: var(--primary-red);
+    box-shadow: 0 20px 40px rgba(165, 28, 48, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Ensure the text is visible when the card is expanded */
+.project-card:hover p {
+    opacity: 1;
+    max-height: 200px;
+}
+
+/* 2. THE VERTICALLY STACKED CARDS: Forced into perfect squares */
+.projects-container:hover .project-card:not(:hover) {
+    grid-column: 2;
+    grid-row: auto; 
+    
+    /* SQUARE TRANSFORMATION */
+    aspect-ratio: 1 / 1; 
+    height: 240px; 
+    
+    padding: 25px;
+    opacity: 0.8;
+}
+
+/* 3. CONTENT REMOVAL: Strips out description text on shrunken items */
+.projects-container:hover .project-card:not(:hover) p {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    overflow: hidden; /* Hard prevents text overflow jank inside squares */
+}
+
+/* Gracefully scale typography down inside the small squares */
+.projects-container:hover .project-card:not(:hover) h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 0 0;
+}
+
+/* Compact the EKG height inside small squares */
+.projects-container:hover .project-card:not(:hover) .ekg-container {
+    height: 45px;
+    margin-bottom: 5px;
 }
 
 /* ==========================================
