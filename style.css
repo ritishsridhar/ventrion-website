@@ -265,6 +265,13 @@ body {
                 rgba(18, 25, 33, 1) 15%, 
                 #e2e6e9 65%, 
                 #d1d8dc 100%);
+    width: 100%;
+    min-height: 100vh; /* Forces the background to span at least the full screen height vertically */
+    box-sizing: border-box;
+    position: relative;
+    
+    /* Smooth transition for when the columns fluidly morph on hover */
+    transition: grid-template-columns 0.6s cubic-bezier(0.16, 1, 0.3, 1), gap 0.6s ease;
 }
 /* Morph grid layout on hover: Active side widens, inactive side scales down for the stack */
 .projects-container:hover {
