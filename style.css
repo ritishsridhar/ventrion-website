@@ -119,8 +119,6 @@ body {
     ========================================== */
 
 .hamburger {
-    /* Changed from none to inline-flex (or flex) so the layout actually applies, 
-       but keep it hidden by default if you only want it on mobile */
     display: none; 
     flex-direction: column;
     background: none;
@@ -132,7 +130,6 @@ body {
     flex-shrink: 0;
 }
 
-/* Media query reminder: Make sure to actually show it on smaller screens! */
 @media (max-width: 768px) {
     .hamburger {
         display: inline-flex;
@@ -152,28 +149,26 @@ body {
     border-radius: 2px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     
-    /* FIX 1: Change origin to left or right instead of center. 
-       This makes the geometry for an 'X' incredibly simple. */
-    transform-origin: left center; 
+    /* FIX 1: Keep it at center so the cross expands outwards symmetrically */
+    transform-origin: center; 
     display: block;
 }
 
-/* --- Hamburger active state (Perfect X shape) --- */
+/* --- THE PERFECT CROSS CORRECTION --- */
 
 .hamburger.active span:nth-child(1) {
-    /* 45 degrees down. Because origin is left, it stays pinned to the left side */
-    transform: rotate(45deg); 
+    /* Moves down 9px to the absolute center, then rotates 45deg */
+    transform: translateY(9px) rotate(45deg); 
 }
 
 .hamburger.active span:nth-child(2) {
     opacity: 0;
-    /* ScaleX(0) or simple translate is fine here */
     transform: translateX(-10px); 
 }
 
 .hamburger.active span:nth-child(3) {
-    /* 45 degrees up. Pinned to the left side */
-    transform: rotate(-45deg); 
+    /* Moves up 9px to the absolute center, then rotates -45deg */
+    transform: translateY(-9px) rotate(-45deg); 
 }
 /* ==========================================
     3. HERO SECTION
