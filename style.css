@@ -119,7 +119,9 @@ body {
     ========================================== */
 
 .hamburger {
-    display: none;
+    /* Changed from none to inline-flex (or flex) so the layout actually applies, 
+       but keep it hidden by default if you only want it on mobile */
+    display: none; 
     flex-direction: column;
     background: none;
     border: none;
@@ -128,6 +130,13 @@ body {
     padding: 10px;
     z-index: 1001;
     flex-shrink: 0;
+}
+
+/* Media query reminder: Make sure to actually show it on smaller screens! */
+@media (max-width: 768px) {
+    .hamburger {
+        display: inline-flex;
+    }
 }
 
 .hamburger:focus {
@@ -142,24 +151,30 @@ body {
     background: var(--primary-red);
     border-radius: 2px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-origin: center;
+    
+    /* FIX 1: Change origin to left or right instead of center. 
+       This makes the geometry for an 'X' incredibly simple. */
+    transform-origin: left center; 
     display: block;
 }
 
-/* Hamburger active state (X shape) */
+/* --- Hamburger active state (Perfect X shape) --- */
+
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
+    /* 45 degrees down. Because origin is left, it stays pinned to the left side */
+    transform: rotate(45deg); 
 }
 
 .hamburger.active span:nth-child(2) {
     opacity: 0;
-    transform: translateX(-10px);
+    /* ScaleX(0) or simple translate is fine here */
+    transform: translateX(-10px); 
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -8px);
+    /* 45 degrees up. Pinned to the left side */
+    transform: rotate(-45deg); 
 }
-
 /* ==========================================
     3. HERO SECTION
     ========================================== */
@@ -182,11 +197,14 @@ body {
     font-size: 3.5rem; 
     color: var(--primary-red); 
     margin-bottom: 20px;
+    
+    /* Match this to your animation's start point to prevent snapping */
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(25px); 
+    
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    will-change: transform, opacity;
 }
-
 .hero h2 { 
     font-family: 'Merriweather', serif; 
     font-size: 1.75rem; 
@@ -194,7 +212,8 @@ body {
     margin-bottom: 20px;
     opacity: 0;
     transform: translateY(25px);
-    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    will-change: transform, opacity;
 }
 
 .hero p { 
@@ -204,7 +223,8 @@ body {
     margin-bottom: 20px;
     opacity: 0;
     transform: translateY(15px);
-    animation: smoothFadeUp 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    animation: smoothFadeUp 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    will-change: transform, opacity;
 }
 
 .hero a {
@@ -300,10 +320,10 @@ body {
     5. REVEAL ANIMATIONS & KEYFRAMES
     ========================================= */
 @keyframes smoothFadeUp {
-    from { 
+    /*from { 
         opacity: 0; 
         transform: translateY(15px); 
-    }
+    }*/
     to { 
         opacity: 1; 
         transform: translateY(0); 
