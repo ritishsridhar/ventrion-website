@@ -255,11 +255,13 @@ body {
     4. PROJECT CARDS
     ========================================== */
 .projects-container {
-    display: flex;
+    display: grid;
+    /* DEFAULT STATE: Three equal columns */
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
     gap: 30px;
     padding: 120px 5% 80px;
-    flex-wrap: wrap;
     background: linear-gradient(to bottom, 
                 rgba(18, 25, 33, 1) 0%, 
                 rgba(18, 25, 33, 1) 15%, 
