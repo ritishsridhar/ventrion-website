@@ -251,40 +251,57 @@ body {
     transform: translateY(0);
 }
 
+
 /* ==========================================
     4. PROJECT CARDS
     ========================================== */
-/* ==========================================
-    4. PROJECT CARDS (Reliable Flexbox Approach)
-    ========================================== */
 .projects-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    padding: 120px 5% 80px;
+    
     /* UNALTERED BACKGROUND: Kept exactly as you provided */
     background: linear-gradient(to bottom, 
                 rgba(18, 25, 33, 1) 0%, 
                 rgba(18, 25, 33, 1) 15%, 
                 #e2e6e9 65%, 
                 #d1d8dc 100%);
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 100vh; /* Keeps the background full-screen height */
-    box-sizing: border-box;
-    transition: gap 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Base card styling when nothing is hovered */
+/* Inner wrapper coordinating the layout shifts */
+.projects-flex-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* On hover: Change layout structure to force secondary items to wrap into a stack */
+.projects-flex-wrapper:hover {
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 510px; /* Locks structural bounds so cards stay crisp */
+    align-content: space-between; /* Pushes expanded card left, stack right */
+    gap: 20px;
+}
+
 .project-card {
-    background: var(--card-bg);
+    background: var(--card-bg, #ffffff);
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 16px;
     padding: 40px 25px;
     
-    /* Give each card an equal base share of space */
-    flex: 1 1 300px;
+    /* Default resting state sizes */
+    width: calc(33.333% - 20px);
     height: 480px;
     
     text-align: center;
@@ -298,18 +315,16 @@ body {
     justify-content: center;
     align-items: center;
     
-    /* Smooth transitions for all properties */
-    transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 padding 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 opacity 0.4s ease,
                 border-color 0.4s ease,
                 box-shadow 0.4s ease;
 }
 
 .project-card h3 {
-    color: var(--text-main);
+    color: var(--text-main, #121921);
     font-size: 1.3rem;
     margin: 20px 0 15px;
     font-weight: 700;
@@ -317,7 +332,7 @@ body {
 }
 
 .project-card p {
-    color: var(--text-muted);
+    color: var(--text-muted, #64748b);
     font-size: 0.95rem;
     line-height: 1.6;
     transition: opacity 0.3s ease, max-height 0.4s ease, margin 0.4s ease;
@@ -333,6 +348,52 @@ body {
 .ekg-container svg {
     width: 100%;
     height: 100%;
+}
+
+/* ==========================================
+    DYNAMIC INTERACTION HOVER STATES
+   ========================================== */
+
+/* 1. THE HOVERED CARD: Takes full height and scales wide horizontally */
+.project-card:hover {
+    width: 65%;
+    height: 500px;
+    border-color: var(--primary-red);
+    box-shadow: 0 20px 40px rgba(165, 28, 48, 0.15);
+}
+
+/* Keep description content beautifully visible when active */
+.project-card:hover p {
+    opacity: 1;
+    max-height: 200px;
+}
+
+/* 2. THE MINIMIZED CARDS: Formed into uniform squares and stacked vertically */
+.projects-flex-wrapper:hover .project-card:not(:hover) {
+    width: 240px;
+    height: 240px; /* Perfect square shape */
+    padding: 20px;
+    opacity: 0.8;
+}
+
+/* 3. CONTENT REMOVAL: Strips body paragraph out completely on unhovered cards */
+.projects-flex-wrapper:hover .project-card:not(:hover) p {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Scale headers down inside shrunken square items */
+.projects-flex-wrapper:hover .project-card:not(:hover) h3 {
+    font-size: 1.05rem;
+    margin: 10px 0 0 0;
+}
+
+/* Scale down EKG containers inside shrunken square items */
+.projects-flex-wrapper:hover .project-card:not(:hover) .ekg-container {
+    height: 40px;
+    margin-bottom: 5px;
 }
 
 /* ==========================================
