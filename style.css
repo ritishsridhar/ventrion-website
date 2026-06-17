@@ -197,7 +197,7 @@ body {
     opacity: 0;
     transform: translateY(25px); 
     
-    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     will-change: transform, opacity;
 }
 .hero h2 { 
@@ -207,7 +207,7 @@ body {
     margin-bottom: 20px;
     opacity: 0;
     transform: translateY(25px);
-    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     will-change: transform, opacity;
 }
 
@@ -218,7 +218,7 @@ body {
     margin-bottom: 20px;
     opacity: 0;
     transform: translateY(15px);
-    animation: smoothFadeUp 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    animation: smoothFadeUp 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
     will-change: transform, opacity;
 }
 
